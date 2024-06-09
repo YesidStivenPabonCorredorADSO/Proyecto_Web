@@ -1,0 +1,13 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --color--fondo:#49BAFF;
+    --color--titulo:#0F4AA9;
+    --color--parrafo1:#005FA7;
+    --color--parrafo--button:#FFFFFF;
+    --color--fondo--button:#1F97FF;
+    --color--fondo--menu:#015FF4;
+}
