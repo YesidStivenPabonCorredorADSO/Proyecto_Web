@@ -67,3 +67,102 @@
     border: 1px solid var(--color--parrafo1);
     border-radius: 10px;
 }
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(/imagen/Hombre.png);
+    background-size: cover;
+    background-repeat:no-repeat ;
+    width: 100%;
+    height: 200vh;
+    z-index: 2;
+}
+.main__section--inicio{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+.main__Section--titulo{
+    color: var(--color--parrafo--button);
+    font-size: 34px;
+}
+.main__section--parrafo{
+    color: var(--color--parrafo--button);
+    font-size: 20px;
+}
+.main__section--button{
+    color: var(--color--parrafo--button);
+    border:1px solid var(--color--parrafo1);
+    border-radius: 10px;
+    width: 100px;
+    height: 40px;
+    background-color: var(--color--fondo--button);
+}
+.main__infom{
+    display: flex;
+    background-color: var(--color--fondo);
+    height: 100vh;
+
+}
+.main__section--infom{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 50px;
+}
+.main__section--infom--article{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.main__section--infom--titulo{
+    color: var(--color--parrafo--button);
+    font-size: 35px;
+}
+.main__section--infom--parrafo{
+    color: var(--color--parrafo--button);
+    font-size: 20px;
+    text-align: center;
+}
+.main__section--infom--main{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
+    margin-top: 130px;
+}
+.main__section--infom--block1{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.main__section--infom--block--colum{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    width: 372px;
+    margin: 10px;
+    border-radius: 10px;
+}
+.main__section--infom--bloc--titulo{
+    font-size: 30px;
+    text-align: center;
+    color: var(--color--parrafo--button);
+}
+.main__section--infom--block--img{
+    width: 100px;
+    height: 50px;
+}
+.main__section--infom--bloc--parrafo{
+    text-align: center;
+    color: var(--color--parrafo--button);
+}
