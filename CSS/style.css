@@ -11,3 +11,59 @@
     --color--fondo--button:#1F97FF;
     --color--fondo--menu:#015FF4;
 }
+.header{
+    background-color: var(--color--fondo--menu);
+    display: flex;
+    justify-content: space-between;
+}
+.header__div--img{
+    width: 100px;
+}
+.header__div{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.header__div--parrafo{
+    color: var(--color--parrafo--button);
+}
+/* De la linea 14 a la linea 28 es la parte de la imagen y el titulo "SERA" */
+.header__div--links{
+    display: flex;
+    align-items: center;
+}
+
+.header__div--ul--links{
+    display: flex;
+    list-style: none;
+}
+.header__div--li--links{
+    margin: 10px;
+}
+.links{
+    color: var(--color--parrafo--button);
+    text-decoration: none;
+    font-size: 20px;
+}
+/* De la linea 31 a 47 es la parte del link */
+.header__div--buttoon{
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+.header__div--buttoon1{
+    color: var(--color--parrafo--button);
+    border:1px solid var(--color--parrafo1);
+    border-radius: 10px;
+    width: 100px;
+    height: 40px;
+    background-color: var(--color--fondo--button);
+}
+.header__div--buttoon2{
+    border-radius: 10px;
+    width: 100px;
+    height: 40px;
+    color: var(--color--parrafo1);
+    border: 1px solid var(--color--parrafo1);
+    border-radius: 10px;
+}
