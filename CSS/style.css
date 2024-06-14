@@ -75,7 +75,7 @@
     background-size: cover;
     background-repeat:no-repeat ;
     width: 100%;
-    height: 200vh;
+    height: 100vh;
     z-index: 2;
 }
 .main__section--inicio{
@@ -145,6 +145,8 @@
     display: flex;
     background-color: var(--color--fondo);
     height: 100vh;
+    justify-content: center;
+    align-items: center;
 
 }
 .main__section--infom{
