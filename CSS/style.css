@@ -162,6 +162,8 @@
     display: flex;
     background-color: var(--color--fondo);
     height: 100vh;
+    justify-content: center;
+    align-items: center;
 
 }
 .main__section--infom{
