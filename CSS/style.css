@@ -68,15 +68,32 @@
     border-radius: 10px;
 }
 .main{
+    width: 100%;
+    height: 100vh;
+}
+.main__section--article--img{
+    display: block;
+    position: relative;
+}
+.main__img1{
+    display: block;
+    position: absolute;
+    z-index: 1;
+    right: 100px;
+    top: -2px;
+
+}
+.main__img2{
+    display: block;
+    position: absolute;
+    z-index: 1;
+    left: 1139px;
+    top: 383px;
+}
+.main__section{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url(/imagen/Hombre.png);
-    background-size: cover;
-    background-repeat:no-repeat ;
-    width: 100%;
-    height: 200vh;
-    z-index: 2;
 }
 .main__section--inicio{
     display: flex;
@@ -86,15 +103,15 @@
     padding: 30px;
 }
 .main__Section--titulo{
-    color: var(--color--parrafo--button);
+    color: black;
     font-size: 34px;
 }
 .main__section--parrafo{
-    color: var(--color--parrafo--button);
-    font-size: 20px;
+    color: black;
+    text-align: center;
 }
 .main__section--button{
-    color: var(--color--parrafo--button);
+    color: black;
     border:1px solid var(--color--parrafo1);
     border-radius: 10px;
     width: 100px;
