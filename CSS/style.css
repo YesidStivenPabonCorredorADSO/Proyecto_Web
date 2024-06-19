@@ -10,9 +10,13 @@
     --color--parrafo--button:#FFFFFF;
     --color--fondo--button:#1F97FF;
     --color--fondo--menu:#015FF4;
+    --color--nuevo--fondo--menu:#DFF0FF;
+    --color--fondo--main:#2B88DA;
+    --color--fondo--main--sobre_nosotros:#015FF4;
 }
 .header{
-    background-color: var(--color--fondo--menu);
+    background-color: var(--color--nuevo--fondo--menu);
+    opacity: 77%;
     display: flex;
     justify-content: space-between;
 }
@@ -25,7 +29,7 @@
     align-items: center;
 }
 .header__div--parrafo{
-    color: var(--color--parrafo--button);
+    color: black;
 }
 /* De la linea 14 a la linea 28 es la parte de la imagen y el titulo "SERA" */
 .header__div--links{
@@ -41,7 +45,7 @@
     margin: 10px;
 }
 .links{
-    color: var(--color--parrafo--button);
+    color: black;
     text-decoration: none;
     font-size: 20px;
 }
@@ -59,48 +63,34 @@
     height: 40px;
     background-color: var(--color--fondo--button);
 }
-.header__div--buttoon2{
-    border-radius: 10px;
-    width: 100px;
-    height: 40px;
-    color: var(--color--parrafo1);
-    border: 1px solid var(--color--parrafo1);
-    border-radius: 10px;
-}
 .main{
+    background: var(--color--fondo--main);
+    height: 805px;
+}
 
-    height: 100vh;
-}
-.main__section--article--img{
-    display: block;
-    position: relative;
-}
 .main__img1{
     display: block;
     position: absolute;
     z-index: 1;
-    right: 100px;
-    top: -2px;
 
 }
 .main__img2{
     display: block;
     position: absolute;
     z-index: 1;
-    left: 1139px;
-    top: 383px;
+    left: 725px;
 }
 .main__section{
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.main__section--inicio{
+.main__section--article--inicio{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 30px;
+    z-index: 2;
 }
 .main__Section--titulo{
     color: black;
@@ -114,48 +104,64 @@
     color: black;
     border:1px solid var(--color--parrafo1);
     border-radius: 10px;
-    width: 100px;
+    width: 150px;
     height: 40px;
     background-color: var(--color--fondo--button);
 }
-/*  */
-.main__nosotros{
-    height: 100vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+.z-index{
+    z-index: 1;
 }
 .main__section--img{
     width: 300px;
     height: 250px;
-
 }
-.main__section--nosotros--main--margin{
-    display: flex;
-    flex-direction: row;
+/*  */
+.main__nosotros{
+    height: 800px;
+    background: var(--color--fondo--main--sobre_nosotros);
+}
+.main__nosotros--imgs{
+    width: 100px;
+}
+
+.main__nosotros--img1{
+    display: block;
+    position: relative;
+    left: 641px;
+    bottom: 3px;
+}
+.main__nosotros--img2{
+    display: block;
+    position: relative;
+    top: 433px;
+}
+.main__nosotros--titulo{
+    display:flex;
     justify-content: center;
     align-items: center;
 }
-.main__section--nostros--main{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
+.main__nosotros--article--h1{
+    font-size: 48px;
+    color: black;
 }
-.main__section--nosotros--block--colum{
+.main__nosotros--contenido{
+    display: flex;
+}
+.main__nosotros--contenido--img{
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    margin: 100px;
 }
-.main__section--nosotros--block--titulo{
-    font-size: 34px;
+.img{
+    width: 300px;
+    height: 200px;
 }
-.main__section--nosotros--block--parrafo{
-    text-align: center;
+.main__nosotros--contenido--article{
+    display: flex;
+}
+.p{
+    padding: 30px;
+    font-size: 24px;
 }
 /*  */
 .main__infom{
