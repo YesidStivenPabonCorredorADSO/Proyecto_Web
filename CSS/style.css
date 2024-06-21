@@ -78,7 +78,7 @@
     display: block;
     position: absolute;
     z-index: 1;
-    left: 725px;
+    left: 1276px;
 }
 .main__section{
     display: flex;
@@ -127,7 +127,7 @@
 .main__nosotros--img1{
     display: block;
     position: relative;
-    left: 641px;
+    left: 1198px;
     bottom: 3px;
 }
 .main__nosotros--img2{
