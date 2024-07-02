@@ -12,6 +12,7 @@
     --color--parrafo--main: #0F4AA9;
     --color--fondo--button: #1F97FF;
     --color--titulo--label: #02508A;
+    --color--input:#78CBFF;
     --color--text--button:#005FA7;
 }
 .header {
@@ -37,8 +38,8 @@
     width: 60px;
     height: 60px;
 }
-  /* Main styles */
-.main {
+ /* Main styles */
+ .main {
     background: var(--color--fondo--main);
     height: 600px;
     display: flex;
@@ -51,6 +52,40 @@
     justify-content: center;
     align-items: center;
 }
+.main__formu--article {
+    border-radius: 20px;
+    width: 340px;
+    height: 300px;
+    padding: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #DFF0FF;
+}
+.main__formu--titulo{
+    text-align: center;
+    font-size: 29px;
+    color: var(--color--fondo--button);
+}
+.main__formu--parrafo {
+    text-align: center;
+    color: var(--color--fondo--button);
+}
+.main__formu--button1 {
+    border-radius: 30px;
+    border: none;
+    background: var(--color--fondo--button);
+    width: 300px;
+    height: 30px;
+    color: var(--color--titulo);
+}
+.main__formu--button2 {
+    width: 300px;
+    height: 30px;
+    border-radius: 30px;
+    border: solid 1px var(--color--fondo--header);
+    color: var(--color--text--button);
+}
 .main__section--article--input {
     width: 300px;
     height: 30px;
@@ -59,29 +94,6 @@
     outline: none;
     padding: 10px;
 }
-.main__formu--article {
-    border-radius: 20px;
-    width: 340px;
-    height: 300px;
-    padding: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #DFF0FF;
-}
-.main__formu--button1 {
-    border-radius: 30px;
-    border: none;
-    background: var(--color--fondo--button);
-    width: 300px;
-    height: 30px;
-}
-.main__formu--button2 {
-    width: 300px;
-    height: 30px;
-    border-radius: 30px;
-    border: solid 1px var(--color--fondo--header);
-}
 .main__formu--links1{
     text-decoration: none;
     color: var(--color--titulo);
@@ -89,15 +101,4 @@
 .main__formu--links2{
     text-decoration: none;
     color: var(--color--text--button);
-}
-.main__formu--label {
-    color: var(--color--titulo--label);
-}
-.main__formu--titulo{
-    text-align: center;
-    color: var(--color--fondo--button);
-}
-.main__formu--parrafo {
-    text-align: center;
-    color: var(--color--fondo--button);
 }
