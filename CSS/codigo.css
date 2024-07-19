@@ -41,7 +41,7 @@
  /* Main styles */
 .main {
     background: var(--color--fondo--main);
-    height: 600px;
+    height: 885px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -79,6 +79,14 @@
     width: 70px;
     background-color: var(--color--input);
     padding: 10px;
+}
+.main__formu--links1{
+    text-decoration: none;
+    color: var(--color--titulo);
+}
+.main__formu--links2{
+    text-decoration: none;
+    color: var(--color--text--button);
 }
 .main__formu--button1 {
     border-radius: 30px;

@@ -10,8 +10,19 @@
 <body>
     <header class="header">
         <div class="header__div">
-            <h1 class="header__div--titulo"></h1>
-            <img class="header__div--img" src="" alt="">
+            <div class="dropdown">
+                <a class="header__menu dropdown-btn"><i class="fa-solid fa-bars fa-2xl"></i></a>
+                <div class="dropdown-content">
+                        <img class="imagen_dropdown"src="/imagen/103.png">
+                        <nav class="menu--left">
+                            <a class="menu__link" href="/html/logueo.html">Logueate </a>
+                            <a class="menu__link" href="/html/registro.html">Registarte</a>
+                            <a class="menu__link" href="/html/recuperar.html">Recuperar Contraseña</a>
+                        </nav>
+                </div>
+              </div>
+            <h1 class="header__div--titulo">Crear Contraseña</h1>
+            <img class="header__div--img" src="/imagen/logo_xd.png" alt="">
         </div>
     </header>
     <main class="main">
@@ -22,10 +33,12 @@
                     <br>
                     <p class="main__formu--parrafo">Crea una contraseña segura con letras, números y símbolos combinados.</p>
                     <br>
-                    <input class="ma" type="text" placeholder="Contraseña "><i class="fa-solid fa-eye"></i>
-                    <br>
-                    <input type="text" placeholder="Confirme contraseña"><i class="fa-solid fa-eye"></i>
-                    <button class="main__formu--button1" ><a class="main__formu--links1" href=""></a></button>
+                    <input class="main__section--article--input" type="text" placeholder="Contraseña ">
+                    <br><br>
+                    <input class="main__section--article--input" type="text" placeholder="Confirme contraseña">
+                    <br><br>
+                    <button class="main__formu--button2"><a class="main__formu--links1" href="/html/informacion_basica.html">Cancelar</a></button>
+                    <button class="main__formu--button1" ><a class="main__formu--links2" href="">Confirmar</a></button>
                 </form>
             </article>
         </section>

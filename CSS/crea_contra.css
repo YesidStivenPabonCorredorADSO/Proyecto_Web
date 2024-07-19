@@ -37,10 +37,59 @@
     width: 60px;
     height: 60px;
 }
+/* Dropdown styles */
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  .dropdown-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  .imagen_dropdown{
+    width: 250px;
+    height: 140px;
+  }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #B6DFFF;
+    min-width: 250px;
+    min-height: 885px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 20px;
+  }
+  .dropdown-content a {
+    color: black;
+    padding: 12px ;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+  }
+  .dropdown-content a:hover {
+    background-color: #ffff;
+    border-radius: 20px;
+  }
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  .menu--left{
+    height: calc(100vh - 200px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 7px;
+}
+
+  
   /* Main styles */
 .main {
     background: var(--color--fondo--main);
-    height: 600px;
+    height: 885px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -75,7 +124,6 @@
     background: var(--color--fondo--button);
     width: 100px;
     height: 30px;
-
 }
 .main__formu--button2 {
     width: 100px;
@@ -107,4 +155,12 @@
 .main__formu--label{
     color:var(--color--fondo--button) ;
     margin-left: 10px;
+}
+
+
+.menu__link{
+    display: block;
+}
+.menu__link:hover{
+   
 }
