@@ -134,4 +134,9 @@
     text-decoration: none;
     color: var(--color--titulo);
   }
-  
+  .input_bien{
+    border: solid 2px green;
+}
+.input_mal{
+    border: solid 2px red;
+}

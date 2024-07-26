@@ -28,14 +28,14 @@
     <main class="main">
         <section class="main__formu">
             <article class="main__formu--article">
-                <form action="">
+                <form action="" id="form_registro">
                     <h2 class="main__formu--titulo">Registro</h2>
                     <p class="main__formu--titulo">Ingresa tu nombre</p>
                     <br>
                     <label class="main__formu--label" for="name">Nombre</label>
-                    <input class="main__section--article--input" id="name" placeholder="Primer Nombre" type="text"><br><br>
+                    <input class="main__section--article--input" id="nombre" placeholder="Primer Nombre" type="text" autocomplete="off"required><br><br>
                     <label class="main__formu--label" for="name_apellido">Apellido</label>
-                    <input class="main__section--article--input" id="name_apellido" placeholder="Primer Apellido" type="text"><br><br>
+                    <input class="main__section--article--input" id="name_apellido" placeholder="Primer Apellido" type="text" autocomplete="off" required><br><br>
                     <button class="main__formu--button2"><a class="main__formu--links1" href="/html/logueo.html">Cancelar</a></button>
                     <button class="main__formu--button1"><a class="main__formu--links2" href="/html/informacion_basica.html">Confirmar</a></button>
                 </form>
@@ -43,5 +43,5 @@
         </section>
     </main>
 </body>
-<script src="/App_javascript/App.js"></script>
+<script type="module" src="/App_javascript/App.js"></script>
 </html>

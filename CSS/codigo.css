@@ -103,3 +103,9 @@
     border: solid 1px var(--color--fondo--header);
     color: var(--color--text--button);
 }
+.input_bien{
+    border: solid 2px green;
+}
+.input_mal{
+    border: solid 2px red;
+}

@@ -181,3 +181,9 @@ width: auto;
 input[type="date"]:hover::-webkit-datetime-edit {
 display: block;
 }
+.input_bien{
+    border: solid 2px green;
+}
+.input_mal{
+    border: solid 2px red;
+}

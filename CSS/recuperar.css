@@ -149,3 +149,9 @@
     text-align: center;
     color: var(--color--fondo--button);
 }
+.input_bien{
+    border: solid 2px green;
+}
+.input_mal{
+    border: solid 2px red;
+}

@@ -156,11 +156,12 @@
     color:var(--color--fondo--button) ;
     margin-left: 10px;
 }
-
-
 .menu__link{
     display: block;
 }
-.menu__link:hover{
-   
+.input_bien{
+    border: solid 2px green;
+}
+.input_mal{
+    border: solid 2px red;
 }

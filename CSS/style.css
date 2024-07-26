@@ -273,3 +273,9 @@
     color: var(--color--parrafo--button);
     margin: 0 20px;
 }
+.input_bien{
+    border: solid 2px green;
+}
+.input_mal{
+    border: solid 2px red;
+}
