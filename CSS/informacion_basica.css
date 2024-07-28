@@ -41,18 +41,18 @@
 .dropdown {
     position: relative;
     display: inline-block;
-  }
-  .dropdown-btn {
+}
+.dropdown-btn {
     background: none;
     border: none;
     cursor: pointer;
     padding: 0;
-  }
-  .imagen_dropdown{
+}
+.imagen_dropdown{
     width: 250px;
     height: 140px;
-  }
-  .dropdown-content {
+}
+.dropdown-content {
     display: none;
     position: absolute;
     background-color: #B6DFFF;
@@ -61,8 +61,8 @@
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
     border-radius: 20px;
-  }
-  .dropdown-content a {
+}
+.dropdown-content a {
     color: black;
     padding: 12px ;
     text-decoration: none;
@@ -70,21 +70,21 @@
     text-align: center;
     margin-top: 10px;
     margin: 10px;
-  }
-  .dropdown-content a:hover {
+}
+.dropdown-content a:hover {
     background-color: #ffff;
     border-radius: 20px;
-  }
-  .dropdown:hover .dropdown-content {
+}
+.dropdown:hover .dropdown-content {
     display: block;
-  }
-  .menu--left{
+}
+.menu--left{
     height: calc(100vh - 200px);
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 7px;
-  }
+}
   /* Main styles */
 .main {
     background: var(--color--fondo--main);
@@ -116,6 +116,14 @@
     justify-content: center;
     align-items: center;
     background: #DFF0FF;
+}
+.main__section--article--input {
+    width: 300px;
+    height: 30px;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    padding: 10px;
 }
 .main__formu--button1 {
     border-radius: 30px;
@@ -155,31 +163,6 @@
 .main__formu--label{
     color:var(--color--fondo--button) ;
     margin-left: 10px;
-}
-/* ocultar controles de input date */ 
-input[type="date"]::-webkit-inner-spin-button,
-::-webkit-calendar-picker-indicator,
-::-webkit-datetime-edit{
-display: none;
-}
-/* mostrar el calendario al hacer click */
-input[type="date"]::-webkit-calendar-picker-indicator {
-display: block;
-background: transparent;
-bottom: 0;
-color: transparent;
-cursor: pointer;
-height: auto;
-left: 0;
-position: absolute;
-right: 0;
-top: 0;
-width: auto;
-}
-
-/* mostrar la fecha seleccionada al estar en hover */
-input[type="date"]:hover::-webkit-datetime-edit {
-display: block;
 }
 .input_bien{
     border: solid 2px green;

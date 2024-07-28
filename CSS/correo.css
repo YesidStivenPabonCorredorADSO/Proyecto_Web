@@ -111,8 +111,8 @@
 
   .main__formu--article {
     border-radius: 20px;
-    width: 340px;
-    height: 200px;
+    width: 400px;
+    height: 220px;
     padding: 5px;
     display: flex;
     justify-content: center;
@@ -128,7 +128,6 @@
   }
   .main__formu--label {
     color: var(--color--titulo--label);
-    margin-left: 11px;
   }
   .main__formu--links1{
     text-decoration: none;
@@ -139,4 +138,7 @@
 }
 .input_mal{
     border: solid 2px red;
+}
+.input{
+  width: 315px;
 }

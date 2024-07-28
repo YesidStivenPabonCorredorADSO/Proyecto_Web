@@ -1,5 +1,5 @@
-const contraseña=(event,crear_contraseña,confirmar_contraseña)=>{
-    let expresion=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,15}/;
+const correo=(event,ingresar_correo,confirmar_correo)=>{
+    let expresion=/^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
     const validar=(elemento)=>{
         if (elemento.value === "") {
             elemento.classList.add("input_mal");
@@ -12,7 +12,7 @@ const contraseña=(event,crear_contraseña,confirmar_contraseña)=>{
             elemento.classList.add("input_bien");
         }
     };
-    const validacion_Contraseña = (crear, confirmar) => {
+    const validacion_correo = (crear, confirmar) => {
         if (crear.value !== confirmar.value) {
             confirmar.classList.add("input_mal");
             confirmar.classList.remove("input_bien");
@@ -22,8 +22,8 @@ const contraseña=(event,crear_contraseña,confirmar_contraseña)=>{
         }
     }; 
 
-    validar(crear_contraseña);
-    validar(confirmar_contraseña);
-    validacion_Contraseña(crear_contraseña,confirmar_contraseña);
+    validar(ingresar_correo);
+    validar(confirmar_correo);
+    validacion_correo(ingresar_correo,confirmar_correo);
 }
-export default contraseña;
+export default correo;
