@@ -1,0 +1,25 @@
+{
+    "users":
+    [
+        {
+            "id": "",
+            "correo":"",
+            "contraseña":""
+        }
+    ],
+    "Users_registro":
+    [
+        {
+            "id":"",
+            "Nombre":"",    
+            "Apellido":"",
+            "Fecha":"",
+            "Genero":"",
+            "Contraseña":"",
+            "Contraseña_confirmar":"",
+            "Correo":"",
+            "Confirmar_correo":""
+        }
+
+    ]
+}

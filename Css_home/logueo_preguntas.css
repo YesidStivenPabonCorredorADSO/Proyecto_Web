@@ -151,3 +151,10 @@
 .tamaño_heigth{
     height: 240px;
 }
+.main__formu--button1 {
+    border-radius: 30px;
+    border: none;
+    background: var(--color--fondo--button);
+    width: 300px;
+    height: 30px;
+  }
