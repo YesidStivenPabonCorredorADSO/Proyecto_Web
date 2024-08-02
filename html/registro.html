@@ -26,58 +26,51 @@
     </div>
 </header>
     <main class="main">
-        <section class="main__formu">
-            <article class="main__formu--article">
-                <form action="" id="form_registro">
-                    <h2 class="main__formu--titulo">Registro</h2>
-                    <p class="main__formu--titulo">Ingresa tu nombre</p>
-                    <br>
-                    <label class="main__formu--label" for="name">Nombre</label>
-                    <input class="main__section--article--input" id="nombre" placeholder="Primer Nombre" type="text" autocomplete="off"required><br><br>
-                    <label class="main__formu--label" for="name_apellido">Apellido</label>
-                    <input class="main__section--article--input" id="name_apellido" placeholder="Primer Apellido" type="text" autocomplete="off" required><br><br>
-                </form>
-                <form >
-                    <h2 class="main__formu--titulo">INFORMACION BASICA</h2><br>
-                    <p class="main__formu--parrafo">Completa tu fecha de nacimiento y género</p><br>
-                    <label class="main__formu--label" for="date">Fecha</label><br>
-                    <input class="main__section--article--input" type="date" id="fecha" autocomplete="off" required>
-                    <br><br>
-                    <label class="main__formu--label" for="radio1">Hombre</label>
-                    <input type="radio" id="radio1" value="0" name="radiobutton1"id="radiobutton1">
-                    <label class="main__formu--label" for="radio2">Mujer</label>
-                    <input type="radio" id="radio2" value="1"name="radiobutton1" id="radiobutton1">
-                    <label class="main__formu--label" for="radio3">Otro</label>
-                    <input type="radio" id="radio3" value="2"name="radiobutton1" id="radiobutton1">
-                    <br><br>
-                </form>
-                <form >
-                    <h2 class="main__formu--titulo">Crea una contraseña segura</h2>
-                    <br>
-                    <p class="main__formu--parrafo">Crea una contraseña segura con letras, números y símbolos combinados.</p>
-                    <br>
-                    <input class="main__section--article--input" type="text" placeholder="Contraseña" id="crear_contraseña">
-                    <br><br>
-                    <input class="main__section--article--input" type="text" placeholder="Confirme contraseña"id="confirmar_contraseña">
-                    <br><br>
-                </form>
-                <form >
-                    <h2 class="main__formu--titulo">Correo Eletronico</h2>
-                    <br>
-                    <label class="main__formu--label" for="">Correo</label>
-                    <input class="main__section--article--input input" type="text" placeholder="Correo Eletronico" id="agregar_correo">
-                    <br><br>
-                    <label class="main__formu--label" for="">Confirme</label>
-                    <input class="main__section--article--input" type="text" placeholder="Confirme correo Eletronico" id="confirmar_correo">
-                    <br><br>
-                </form>
-                <div>
-                    <button class="main__formu--button2" id="botton_enviar">Cancelar</button>
+        <section class="main__section">
+            <article class="main__section--article">
+                <form class="main__section--article--form" novalidate>
+                    <div>
+                        <div class="margin">
+                            <h2 class="main__formu--titulo">Registro</h2>
+                            <p class="main__formu--parrafo ">Ingresa tu nombre</p>
+                            <label class="main__formu--label" for="name">Nombre</label>
+                            <input class="main__section--article--form--input" id="name" type="text"autocomplete="off" placeholder="Ingrese su primer nombre" required>
+                            <label class="main__formu--label" for="apellido">Apellido</label>
+                            <input class="main__section--article--form--input" id="apellido" type="text" autocomplete="off" placeholder="Ingrese su primer apellido"required>
+                        </div>
+                        <div class="margin">
+                            <h2 class="main__formu--titulo">Informacion basica</h2>
+                            <p class="main__formu--parrafo ">Complete tu fecha de nacimiento y genero</p>
+                            <label class="main__formu--label" for="fecha">Fecha</label>
+                            <input class="main__section--article--form--input" id="fecha" type="date"required>
+                            <label class="main__formu--label" for="radio1">Hombre</label>
+                            <input id="radio1" type="radio" name="radiobutton"required>
+                            <label class="main__formu--label" for="radio1">Mujer</label>
+                            <input type="radio" name="radiobutton"required>
+                            <label class="main__formu--label" for="radio1">Otro</label>
+                            <input type="radio" name="radiobutton"required>
+                        </div>
+                        <div class="margin">
+                            <h2 class="main__formu--titulo">Crea una contraseña segura</h2>
+                            <label class="main__formu--label " for="crear_contra">Contraseña</label>
+                            <input class="main__section--article--form--input" id="crear_contra" type="text" placeholder="cree una contraseña"required>
+                            <label class="main__formu--label " for="confirmar_contra">Confirmar</label>
+                            <input class="main__section--article--form--input" id="confirmar_contra" type="text" placeholder="confirme esa contraseña"required>
+                        </div>
+                        <div class="margin">
+                            <h2 class="main__formu--titulo">Correo Eletronico</h2>
+                            <label class="main__formu--label" for="ingresar_correo">Correo</label>
+                            <input class="main__section--article--form--input" id="ingresar_correo" type="text" placeholder="Ingrese un correo Eletronico"required>
+                            <label class="main__formu--label" for="confirmar_correo">Confirmacion</label>
+                            <input class="main__section--article--form--input" id="confirmar_correo" type="text" placeholder="Confirmacion del correo"required>                            
+                        </div>
+                    </div>
+                    <button class="main__formu--button2" type="submit">Cancelar</button>
                     <button class="main__formu--button1">Enviar</button>
-                </div>
+                </form>
             </article>
         </section>
     </main>
 </body>
-<script type="module" src="/App_javascript/App_formulario.js"></script>
+<script type="module" src="/App_javascript/app_registro.js"></script>
 </html>
