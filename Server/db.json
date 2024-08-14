@@ -35,38 +35,42 @@
       "genero": "on",
       "contrasena": "Daniel1@",
       "correo": "daniel11@gmail.com"
-    }
-  ],
-  "Users_login": [
-    {
-      "Correo": "",
-      "Contraseña": "",
-      "id": "77ef"
     },
     {
-      "id": "a9b2",
-      "correo": "yesidpabon145@gmail.com",
-      "contrasena": "Yesidc1@"
+      "id": "1959",
+      "nombre": "Sebas",
+      "apellido": "Ruiz",
+      "fecha": "2005-11-18",
+      "genero": "on",
+      "contrasena": "Sebas11@",
+      "correo": "sebasruiz1@gmail.com"
     },
     {
-      "id": "ccb7",
-      "correo": "yesidpabon145@gmail.com",
-      "contrasena": "Yesidc1@"
+      "id": "f17d",
+      "nombre": "Churro",
+      "apellido": "Neta",
+      "fecha": "2024-08-14",
+      "genero": "on",
+      "contrasena": "Churro1@",
+      "correo": "churro@gmail.com"
     },
     {
-      "id": "c0f4",
-      "correo": "yesidpabon145@gmail.com",
-      "contrasena": "Yesidc1@"
+      "id": "1daa",
+      "nombre": "Samuel",
+      "apellido": "Rueda",
+      "fecha": "2024-08-14",
+      "genero": "on",
+      "contrasena": "Samuel11@",
+      "correo": "samuel@gmail.com"
     },
     {
-      "id": "c2fe",
-      "correo": "yesidpabon145@gmail.com",
-      "contrasena": "Yesidc1@"
-    },
-    {
-      "id": "bd01",
-      "correo": "daniel11@gmail.com",
-      "contrasena": "Daniel1@"
+      "id": "888e",
+      "nombre": "Juan",
+      "apellido": "Olave",
+      "fecha": "2024-08-14",
+      "genero": "on",
+      "contrasena": "Olave11@",
+      "correo": "olave@gmail.com"
     }
   ]
 }

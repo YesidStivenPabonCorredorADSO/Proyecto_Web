@@ -82,25 +82,20 @@ submitButton.addEventListener("click", async (event) => {
     if (bandera && radiosValidos && fechaValida) {
         console.log("Formulario completo y listo para enviar");
 
-        // Recopilar datos del formulario
         const data = {
-            nombre: nombreInput.value,
-            apellido: apellidoInput.value,
+            nombre: nombreInput.value.trim(),
+            apellido: apellidoInput.value.trim(),
             fecha: fechaInput.value,
             genero: document.querySelector('input[name="radiobutton"]:checked')?.value || "",
             contrasena: crearContraInput.value,
             correo: ingresarCorreoInput.value,
         };
 
-        try {
-            // Enviar datos al servidor
-            await enviar(data);
-
-            // Redirigir a la página deseada después de que los datos se hayan enviado correctamente
-            window.location.href = 'logueo.html'; 
-        } catch (error) {
-            console.error("Error al enviar los datos:", error);
-            // Aquí puedes manejar el error y mostrar un mensaje al usuario si es necesario
+        const response = await enviar(data, `Users_registro`);
+        if (response.error) {
+            console.error("Error en la respuesta:", response.error);
+        } else {
+            window.location.href = 'logueo.html';
         }
     } else {
         console.log("Por favor, complete todos los campos correctamente.");

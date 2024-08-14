@@ -97,19 +97,6 @@
 .main__section--img{
   display: block;
 }
-.main__img1{
-    width: 410px;
-    display: block;
-    position: relative;
-    right: 750px;
-  z-index: 1;
-}
-.main__img2{
-  display: block;
-  position: relative;
-  width: 60px;
-  z-index: 1;
-}
 
   /* Dropdown styles */
   .dropdown {
@@ -185,6 +172,18 @@
     align-items: center;
     background: #DFF0FF;
   }
+  .main__section--article--inicio{
+    color: #FFFF;
+  }
+  .main__section--button{
+    width: 200px;
+    height: 40px;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+    color: #ffff;
+    background-color: var(--color--fondo--button);
+  }
   .main__section--article--titulo {
     color: var(--color--parrafo--main);
     text-align: center;
@@ -207,3 +206,70 @@
     width: 150px;
     height: 140px;
   }
+/*  */
+.main__nosotros{
+  background: var(--color--fondo--header);
+  height: 885px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.main__nosotros--contenido{
+  display: flex;
+  align-content: flex-start;
+  flex-direction: row;
+  align-items: center;
+}
+.img{
+  width: 300px;
+  height: 300px;
+}
+.main__nosotros--article--h1{
+  font-size: 35px;
+  color: #FFFF;
+}
+.main__nosotros--contenido--article{
+  color: #FFFF;
+}
+/*  */
+.main__infom{
+  height: 885px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.main__section--infom--article{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.main__section--infom--block1{
+  display: flex;
+  gap: 20px;
+}
+.main__section--infom--block--colum{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  background-color: #49BAFF;
+  border: 1px solid black;
+  width: 500px;
+  height: 400px;
+}
+.footer{
+  background-color: var(--color--parrafo--main);
+}
+.footer__section--article{
+color: #FFFF;
+}
+.footer__section--article{
+display: flex;
+justify-content: space-evenly;
+align-items: center;
+height: 50px;
+}
