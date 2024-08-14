@@ -130,6 +130,9 @@
     align-items: center;
     background: #DFF0FF;
   }
+  .form{
+    padding: 10px;
+  }
   .main__formu--button1 {
     border-radius: 30px;
     border: none;

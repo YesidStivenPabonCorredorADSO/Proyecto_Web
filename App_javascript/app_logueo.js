@@ -30,7 +30,7 @@ loginButton.addEventListener("click", async (event) => {
                 window.location.href = '/Login/logueo.html'; // Redirigir al inicio de sesión o página principal
             } else {
                 console.log("Correo o contraseña incorrectos.");
-                alert("Correo o contraseña incorrectos.");
+
             }
         } catch (error) {
             console.error("Error al validar los datos:", error);
