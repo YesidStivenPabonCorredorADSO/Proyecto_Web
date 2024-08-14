@@ -1,41 +1,52 @@
-export const contraseña = (event, crear_contraseña, confirmar_contraseña, submitButton) => {
-    const expresion = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,15}$/;
+export const contraseña = (event, contraseñaInput, confirmarContraseñaInput = null) => {
+    event.preventDefault(); // Evita que el formulario se envíe automáticamente
 
     const crearErrorSpan = (elemento) => {
+        if (!elemento) return;
+        
+        // Intenta obtener el siguiente elemento hermano que sea un <span> de error
         let errorSpan = elemento.nextElementSibling;
+
+        // Si no existe o no tiene la clase "error-message", lo creamos
         if (!errorSpan || !errorSpan.classList.contains("error-message")) {
             errorSpan = document.createElement("span");
-            errorSpan.classList.add("error-message", "span");
+            errorSpan.classList.add("error-message");
             elemento.parentNode.insertBefore(errorSpan, elemento.nextSibling);
         }
+
         return errorSpan;
     };
 
     const validar = (elemento) => {
-        let errorSpan = crearErrorSpan(elemento);
-        if (!elemento) {
-            console.error("El elemento no está definido.");
-            return;
-        }
+        if (!elemento) return;
+
+        const errorSpan = crearErrorSpan(elemento);
+
+        // Validación del campo
         if (elemento.value.trim() === "") {
             elemento.classList.add("input_mal");
             elemento.classList.remove("input_bien");
-            errorSpan.textContent = "La contraseña es requerida.";
+            errorSpan.textContent = "Este campo es obligatorio.";
             errorSpan.style.display = "block";
-        } else if (!expresion.test(elemento.value)) {
+        } else if (elemento.value.length < 8) {
             elemento.classList.add("input_mal");
             elemento.classList.remove("input_bien");
-            errorSpan.textContent = "La contraseña debe tener entre 8 y 15 caracteres, al menos una letra mayúscula, una letra minúscula, un número y un carácter especial.";
+            errorSpan.textContent = "La contraseña debe tener al menos 8 caracteres.";
             errorSpan.style.display = "block";
         } else {
             elemento.classList.remove("input_mal");
             elemento.classList.add("input_bien");
+            errorSpan.textContent = "";
             errorSpan.style.display = "none";
         }
     };
 
-    const validacion_Contraseña = (crear, confirmar) => {
-        let errorSpan = crearErrorSpan(confirmar);
+    const validarConfirmacion = (crear, confirmar) => {
+        if (!confirmar) return;
+
+        const errorSpan = crearErrorSpan(confirmar);
+
+        // Validación de coincidencia de contraseñas
         if (crear.value !== confirmar.value) {
             confirmar.classList.add("input_mal");
             confirmar.classList.remove("input_bien");
@@ -44,27 +55,12 @@ export const contraseña = (event, crear_contraseña, confirmar_contraseña, sub
         } else {
             confirmar.classList.remove("input_mal");
             confirmar.classList.add("input_bien");
+            errorSpan.textContent = "";
             errorSpan.style.display = "none";
         }
     };
 
-    // Validar las contraseñas
-    [crear_contraseña, confirmar_contraseña].forEach(validar);
-    validacion_Contraseña(crear_contraseña, confirmar_contraseña);
-
-    // Verificar el estado del botón de envío
-    // if (submitButton) {
-    //     if (
-    //         crear_contraseña.classList.contains("input_bien") &&
-    //         confirmar_contraseña.classList.contains("input_bien")
-    //     ) {
-    //         submitButton.classList.remove("input_rojo");
-    //         submitButton.classList.add("input_bien");
-    //     } else {
-    //         submitButton.classList.add("input_rojo");
-    //         submitButton.classList.remove("input_bien");
-    //     }
-    // } else {
-    //     console.error("El botón de envío no está definido.");
-    // }
+    // Aplica las validaciones
+    validar(contraseñaInput);
+    if (confirmarContraseñaInput) validarConfirmacion(contraseñaInput, confirmarContraseñaInput);
 };

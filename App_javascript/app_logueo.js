@@ -1,23 +1,13 @@
 import { correo } from "../App_javascript/Modulo/correo.js";
 import { contraseña } from "../App_javascript/Modulo/contraseña.js";
-import { enviar } from "../App_javascript/Modulo/ajax.js";
+import { enviarLogin } from "../App_javascript/Modulo/ajax.js";
 
 // Obtener referencias a los elementos del DOM
 const form = document.getElementById("loginForm");
-const loginButton = document.getElementById("loginButton");
-const registerButton = document.getElementById("registerButton");
-
+const loginButton = document.querySelector(".main__formu--button1");
+const registerButton = document.querySelector(".main__formu--button2");
 const correoInput = document.getElementById("correo");
 const contraseñaInput = document.getElementById("contraseña");
-
-// Validación en tiempo real de los campos de correo y contraseña
-correoInput.addEventListener("input", (event) => {
-    correo(event, correoInput);
-});
-
-contraseñaInput.addEventListener("input", (event) => {
-    contraseña(event, contraseñaInput);
-});
 
 // Manejo del evento click en el botón de inicio de sesión
 loginButton.addEventListener("click", async (event) => {
@@ -27,18 +17,20 @@ loginButton.addEventListener("click", async (event) => {
     correo(event, correoInput);
     contraseña(event, contraseñaInput);
 
-    // Verificar si las entradas no tienen errores antes de enviar los datos
     if (!correoInput.classList.contains("input_mal") && !contraseñaInput.classList.contains("input_mal")) {
-        const data = {
-            correo: correoInput.value,
-            contrasena: contraseñaInput.value,
-        };
-
         try {
-            await enviar(data);
-            window.location.href = '/html/logueo.html'; // Redirigir al inicio de sesión o página principal
+            // Enviar los datos de login para validación
+            const resultadoValidacion = await enviarLogin(correoInput.value, contraseñaInput.value);
+
+            if (resultadoValidacion.success) {
+                window.location.href = '/Login/logueo.html'; // Redirigir al inicio de sesión o página principal
+            } else {
+                console.log("Correo o contraseña incorrectos.");
+                alert("Correo o contraseña incorrectos.");
+            }
         } catch (error) {
-            console.error("Error al enviar los datos:", error);
+            console.error("Error al validar los datos:", error);
+            alert("Hubo un problema con el servidor. Inténtalo de nuevo más tarde.");
         }
     } else {
         console.log("Por favor, complete todos los campos correctamente.");

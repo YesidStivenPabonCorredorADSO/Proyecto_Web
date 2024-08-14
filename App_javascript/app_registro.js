@@ -97,7 +97,7 @@ submitButton.addEventListener("click", async (event) => {
             await enviar(data);
 
             // Redirigir a la página deseada después de que los datos se hayan enviado correctamente
-            window.location.href = 'logueo.html'; // Cambia 'pagina_enviar.html' por la URL deseada
+            window.location.href = 'logueo.html'; 
         } catch (error) {
             console.error("Error al enviar los datos:", error);
             // Aquí puedes manejar el error y mostrar un mensaje al usuario si es necesario

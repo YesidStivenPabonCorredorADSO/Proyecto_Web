@@ -1,16 +1,22 @@
-export const correo = (event, ingresar_correo, confirmar_correo) => {
+export const correo = (event, ingresar_correo, confirmar_correo = null) => {
     event.preventDefault(); // Evita que el formulario se envíe automáticamente
 
     const expresion = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
 
     const validar = (elemento) => {
+        if (!elemento) return;
+
+        // Intenta obtener el siguiente elemento hermano que sea un <span> de error
         let errorSpan = elemento.nextElementSibling;
+
+        // Si no existe o no tiene la clase "error-message", lo creamos
         if (!errorSpan || !errorSpan.classList.contains("error-message")) {
             errorSpan = document.createElement("span");
-            errorSpan.classList.add("error-message", "span");
+            errorSpan.classList.add("error-message");
             elemento.parentNode.insertBefore(errorSpan, elemento.nextSibling);
         }
 
+        // Validación del campo
         if (elemento.value.trim() === "") {
             elemento.classList.add("input_mal");
             elemento.classList.remove("input_bien");
@@ -30,13 +36,19 @@ export const correo = (event, ingresar_correo, confirmar_correo) => {
     };
 
     const validacion_correo = (crear, confirmar) => {
+        if (!confirmar) return;
+
+        // Intenta obtener el siguiente elemento hermano que sea un <span> de error
         let errorSpan = confirmar.nextElementSibling;
+
+        // Si no existe o no tiene la clase "error-message", lo creamos
         if (!errorSpan || !errorSpan.classList.contains("error-message")) {
             errorSpan = document.createElement("span");
-            errorSpan.classList.add("error-message", "span");
+            errorSpan.classList.add("error-message");
             confirmar.parentNode.insertBefore(errorSpan, confirmar.nextSibling);
         }
 
+        // Validación de coincidencia de correos
         if (crear.value !== confirmar.value) {
             confirmar.classList.add("input_mal");
             confirmar.classList.remove("input_bien");
@@ -51,6 +63,6 @@ export const correo = (event, ingresar_correo, confirmar_correo) => {
     };
 
     // Aplica las validaciones
-    [ingresar_correo, confirmar_correo].forEach(validar);
-    validacion_correo(ingresar_correo, confirmar_correo);
+    validar(ingresar_correo);
+    if (confirmar_correo) validacion_correo(ingresar_correo, confirmar_correo);
 };
