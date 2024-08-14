@@ -39,7 +39,7 @@
     height: 60px;
 }
  /* Main styles */
- .main {
+.main {
     background: var(--color--fondo--main);
     height: 600px;
     display: flex;
@@ -105,6 +105,6 @@
 .input_bien{
     border: solid 2px green;
 }
-.input_mal{
+.input_rojo{
     border: solid 2px red;
 }

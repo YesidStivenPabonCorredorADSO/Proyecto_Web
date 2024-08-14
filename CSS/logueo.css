@@ -11,6 +11,7 @@
     --color--parrafo--main: #0F4AA9;
     --color--fondo--button: #1F97FF;
     --color--titulo--label: #02508A;
+    --color--parafo--button:#005FA7;
   }
   .header {
     background: var(--color--fondo--header);
@@ -135,26 +136,20 @@
     background: var(--color--fondo--button);
     width: 300px;
     height: 30px;
+    color: #FFFF;
   }
   .main__formu--button2 {
     width: 300px;
     height: 30px;
     border-radius: 30px;
     border: solid 1px var(--color--fondo--header);
+    color: var(--color--parafo--button);
   }
   .main__formu--label {
     color: var(--color--titulo--label);
   }
   .main__formu--parrafo {
     margin: 10px;
-  }
-  .main__formu--links1{
-    text-decoration: none;
-    color: var(--color--fondo--button);
-  }
-  .main__formu--links2{
-    text-decoration: none;
-    color: var(--color--titulo);
   }
   .main__formu---a{
     text-decoration: none;

@@ -17,6 +17,21 @@
       "Contraseña_confirmar": "",
       "Correo": "",
       "Confirmar_correo": ""
+    },
+    {
+      "id": "6f95",
+      "nombre": "Yesid",
+      "apellido": "Pabon",
+      "fecha": "2024-08-13",
+      "genero": "on",
+      "contrasena": "Yesidc1@",
+      "correo": "yesidpabon145@gmail.com"
+    }
+  ],
+  "Users_login":[
+    {
+      "Correo": "",
+      "Contraseña": ""
     }
   ]
 }
