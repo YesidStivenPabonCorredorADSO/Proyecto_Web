@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil</title>
+    <title>Historial</title>
+    <link rel="stylesheet" href="/Css_home/historial.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
     <header class="header">
@@ -16,24 +18,25 @@
                 <img class="imagen_dropdown"src="/imagen/103.png">
                 <nav class="menu--left">
                 <a href="/html/logueo.html">Home</a>
-                <a href="">Configuracion</a>
+                <a href="/Login/perfil.html">Perfil</a>
+                <a href="/Login/historial.html">Historial</a>
                 </nav>
             </div>
         </div>
-        <h1 class="header__div--titulo">Resultado</h1>
+        <h1 class="header__div--titulo">Perfil</h1>
         <img class="header__div--img  " src="/imagen/logo_xd.png" alt="Logo">
     </div>
 </header>
 <main class="main">
     <section class="main__section">
         <article class="main__section--article">
-            <input class="main__section--input" type="text" placeholder="Nombre"autocomplete="off">
-            <input class="main__section--input" type="text"placeholder="Apellido"autocomplete="off">
-            <input class="main__section--input" type="text"placeholder="Correo"autocomplete="off">
-            <input class="main__section--input" type="text"placeholder="Contraseña"autocomplete="off">
-            <button class="main__section__button1" type="submit">Editar</button>
-            <button class="main__section__button2" type="submit">Guardar</button>
-            <button class="main__section__button3" type="submit">Cerrar Sesion</button>
+            <p>Su porcentajes es :</p>
+            <div class="main__section--article--div">
+                <div class="div__inputs">
+                    <input class="div__inputs_1" type="text"placeholder="Direccio origen"autocomplete="off">
+                    <input class="div__inputs_1" type="text"placeholder="Direccion destino"autocomplete="off">
+                </div>
+            </div>
         </article>
     </section>
 </main>
