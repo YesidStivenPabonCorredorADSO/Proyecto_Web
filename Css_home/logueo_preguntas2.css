@@ -50,7 +50,7 @@
 }
 .imagen_dropdown{
     width: 260px;
-    height: 150px;
+    height: 200px;
 }
 .dropdown-content {
     display: none;
@@ -84,6 +84,22 @@
     flex-direction: column;
     justify-content: center;
     gap: 7px;
+}
+.content{
+    display: block;
+    position: relative;
+    bottom: 167px;
+    text-align: center;
+}
+.content__input{
+    border-radius: 50px;
+    outline: none;
+    border: none;
+    width: 40px;
+    height: 40px;
+}
+.content__p{
+    color: #FFFF;
 }
   /*  */
 .main {
@@ -169,4 +185,14 @@
     border: solid 1px var(--color--borde--button);
     outline: none;
     padding: 10px;
+}
+.input_bien{
+    border: solid 2px green;
+}
+.input_mal{
+    border: solid 2px red;
+}
+.span{
+    color: red;
+    font-size: 14px;
 }

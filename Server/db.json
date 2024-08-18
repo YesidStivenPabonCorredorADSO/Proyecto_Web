@@ -72,5 +72,27 @@
       "contrasena": "Olave11@",
       "correo": "olave@gmail.com"
     }
+  ],
+  "pregunta_1": [
+    {
+      "Seleccione_vehiculo": "",
+      "vehiculo": "",
+      "id": "7188"
+    },
+    {
+      "Seleccione_estado_clima": "",
+      "Estado_clima": "",
+      "id": "0dea"
+    },
+    {
+      "id": "282a",
+      "vehiculo": "Motos",
+      "ambiente": "Día lluvioso"
+    },
+    {
+      "id": "4498",
+      "vehiculo": "Automovil",
+      "ambiente": "Día lluvioso"
+    }
   ]
 }

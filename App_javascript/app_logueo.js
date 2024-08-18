@@ -1,3 +1,5 @@
+// app_logueo.js
+
 import { correo } from "../App_javascript/Modulo/correo.js";
 import { contraseña } from "../App_javascript/Modulo/contraseña.js";
 import { enviar, obtenerUsuarios } from "../App_javascript/Modulo/ajax.js";
@@ -22,15 +24,26 @@ loginButton.addEventListener("click", async (event) => {
             console.log("Intentando validar usuario con correo:", correoInput.value);
             
             // Enviar los datos de login para validación
-            const resultadoValidacion = await obtenerUsuarios(correoInput, contraseñaInput,`Users_registro`);
+            const resultadoValidacion = await obtenerUsuarios(correoInput, contraseñaInput, `Users_registro`);
 
             console.log("Resultado de la validación:", resultadoValidacion);
 
-            if (resultadoValidacion.success) {
-                window.location.href = '/Login/logueo.html'; // Redirigir al inicio de sesión o página principal
+            if (resultadoValidacion) {
+                // Suponiendo que el usuario devuelto tiene las propiedades `nombre` y `correo`
+                const usuario = resultadoValidacion.find(user => user.correo === correoInput.value);
+                if (usuario) {
+                    // Guardar los datos del usuario en localStorage
+                    localStorage.setItem('usuario', JSON.stringify({
+                        nombre: usuario.nombre,
+                        correo: usuario.correo,
+                        Apellido:usuario.apellido,
+                        contraseña:usuario.contraseña
+                    }));
+                    // Redirigir al usuario a la página de logueo
+                    window.location.href = '/Login/logueo.html'; 
+                }
             } else {
                 console.log("Correo o contraseña incorrectos.");
-
             }
         } catch (error) {
             console.error("Error al validar los datos:", error);
@@ -40,7 +53,6 @@ loginButton.addEventListener("click", async (event) => {
         console.log("Por favor, complete todos los campos correctamente.");
     }
 });
-
 
 // Redirigir al registro cuando se hace clic en el botón de registro
 registerButton.addEventListener("click", () => {

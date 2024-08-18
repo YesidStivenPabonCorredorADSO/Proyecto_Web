@@ -13,43 +13,53 @@
         <div class="dropdown">
             <a class="header__menu dropdown-btn"><i class="fa-solid fa-bars fa-2xl"></i></a>
             <div class="dropdown-content">
-                <!-- <img src="" alt="">
-                <p>User name</p> -->
                 <img class="imagen_dropdown"src="/imagen/103.png">
+                <div class="content">
+                <input class="content__input" type="text">
+                <p class="content__p" id="user-correo">User correo</p>
+                <p class="content__p" id="user-name">User name</p>
+                </div>
                 <nav class="menu--left">
-                <a href="/html/logueo.html">Home</a>
+                <a href="/Login/logueo.html">Home</a>
                 <a href="/Login/perfil.html">Perfil</a>
                 <a href="/Login/historial.html">Historial</a>
                 </nav>
             </div>
         </div>
-        <h1 class="header__div--titulo"></h1>
+        <h1 class="header__div--titulo">Home</h1>
         <img class="header__div--img  " src="/imagen/logo_xd.png" alt="Logo">
-    </div>
+        </div>
+    </header>
 </header>
 <main class="main">
     <h1 class="main__section--article--titulo tamaño" >Responde a estas preguntas </h1>
     <section class="main__titulos">
         <article class="main__section--article">
             <h2 class="main__section--article--titulo">Medio de transporte en que se dirige</h2>
-            <select class="input_select" name="" id="">
-                <option value="">Seleccione</option>
-                <option value="">Motos</option>
-                <option value="">Automovil</option>
-                <option value="">Cicla</option>
-                <option value="">Camion</option>
+            <select class="input_select" name="vehiculo" id="vehiculo" required>
+                <option value="">Seleccione</option >
+                <option value="Motos">Motos</option >
+                <option value="Automovil">Automovil</option >
+                <option value="Cicla">Cicla</option >
+                <option value="Camion">Camion</option >
             </select>
         </article>
     </section>
     <section class="main__titulos">
         <article class="main__section--article tamaño_heigth">
             <h2 class="main__section--article--titulo">Nos puede indicar como se encuentra el ambiente</h2>
-            <textarea class="main__section--text" name="" id="" placeholder="Describe como se encuentre el ambiente">
-            </textarea>
+        <select class="input_select" name="ambiente" id="ambiente" required>
+            <option value="">Seleccione</option required>
+            <option value="Día soleado">Día soleado</option>
+            <option value="Día lluvioso">Día lluvioso</option>
+            <option value="Día nubloso">Día nubloso</option>
+            <option value="Día tormenta">Día tormenta</option>
+            <option value="Día neblina">Día neblina</option>
+        </select>
         </article>
     </section>
-    <Button id="button_login_preguntas" class="main__formu--button1">Siguiente</Button>
+    <Button id="button_preguntas" class="main__formu--button1">Siguiente</Button>
 </main>
 </body>
-<script type="module" src="/App_javascript/app_index.js"></script>
+<script type="module" src="/App_javascript/app_preguntas.js"></script>
 </html>
