@@ -1,4 +1,4 @@
-import { obtenerUsuarios, buscarUsuarios } from "../App_javascript/Modulo/ajax.js"; // Ajusta la ruta según corresponda
+import { obtenerUsuarios, buscarUsuarios, actualizarEstadoUsuario } from "../App_javascript/Modulo/ajax.js"; // Asegúrate de que la ruta sea correcta
 
 document.addEventListener('DOMContentLoaded', async () => {
     let usuarios = [];
@@ -40,10 +40,30 @@ const mostrarUsuarios = (usuarios) => {
             <td>${usuario.correo}</td>
             <td>${usuario.contrasena}</td>
             <td>
-                <button class="status-button active">Activo</button>
-                <button class="status-button inactive">Desactivado</button>
+                <button class="status-button ${usuario.activo ? 'active' : 'inactive'}" data-id="${usuario.id}" data-estado="${usuario.activo}">${usuario.activo ? 'Activo' : 'Desactivado'}</button>
             </td>
         `;
         tableBody.appendChild(row);
+    });
+
+    // Añadir eventos de click a los botones
+    document.querySelectorAll('.status-button').forEach(button => {
+        button.addEventListener('click', async (event) => {
+            const id = event.target.dataset.id;
+            const estado = event.target.dataset.estado === "true";
+
+            try {
+                // Llamar a la función para actualizar el estado del usuario
+                await actualizarEstadoUsuario(id, !estado);
+                alert(`Usuario ${estado ? 'desactivado' : 'activado'} con éxito`);
+
+                // Volver a cargar los usuarios para actualizar la tabla
+                const usuariosActualizados = await obtenerUsuarios('Users_registro');
+                mostrarUsuarios(usuariosActualizados);
+            } catch (error) {
+                console.error('Error al actualizar el estado del usuario:', error);
+                alert('Hubo un problema al actualizar el estado del usuario. Inténtalo de nuevo más tarde.');
+            }
+        });
     });
 };

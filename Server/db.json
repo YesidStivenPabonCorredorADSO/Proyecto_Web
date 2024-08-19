@@ -14,7 +14,8 @@
       "fecha": "2024-08-13",
       "genero": "on",
       "contrasena": "Yesidc1@",
-      "correo": "yesidpabon145@gmail.com"
+      "correo": "yesidpabon145@gmail.com",
+      "activo": true
     },
     {
       "id": "0b75",
@@ -23,7 +24,8 @@
       "fecha": "2024-08-14",
       "genero": "on",
       "contrasena": "Daniel1@",
-      "correo": "daniel11@gmail.com"
+      "correo": "daniel11@gmail.com",
+      "activo": true
     },
     {
       "id": "1959",
@@ -32,7 +34,8 @@
       "fecha": "2005-11-18",
       "genero": "on",
       "contrasena": "Sebas11@",
-      "correo": "sebasruiz1@gmail.com"
+      "correo": "sebasruiz1@gmail.com",
+      "activo": true
     },
     {
       "id": "f17d",
@@ -41,14 +44,16 @@
       "fecha": "2024-08-14",
       "genero": "on",
       "contrasena": "Churro1@",
-      "correo": "churro@gmail.com"
+      "correo": "churro@gmail.com",
+      "activo": true
     },
     {
       "id": "1daa",
       "nombre": "John",
       "apellido": "Becerra",
       "correo": "johnBecerra@gmail.com",
-      "contrasena": "Samuel11@"
+      "contrasena": "Samuel11@",
+      "activo": false
     },
     {
       "id": "888e",
@@ -57,7 +62,8 @@
       "fecha": "2024-08-14",
       "genero": "on",
       "contrasena": "Olave11@",
-      "correo": "olave@gmail.com"
+      "correo": "olave@gmail.com",
+      "activo": true
     }
   ],
   "pregunta_1": [

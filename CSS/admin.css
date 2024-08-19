@@ -180,3 +180,11 @@
 .status-button:hover {
     opacity: 0.8;
 }
+.input__diferent{
+    width: 200px;
+    background-color: var(--color--fondo--button);
+    color: #FFFF;
+}
+.input__diferent:hover{
+    background-color: var(--color--borde--button);
+}
