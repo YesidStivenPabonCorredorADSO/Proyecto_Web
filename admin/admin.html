@@ -10,43 +10,52 @@
 <body>
     <header class="header">
         <div class="header__div">
-        <div class="dropdown">
-            <a class="header__menu dropdown-btn"><i class="fa-solid fa-bars fa-2xl"></i></a>
-            <div class="dropdown-content">
-                <!-- <img src="" alt="">
-                <p>User name</p> -->
-                <img class="imagen_dropdown"src="/imagen/103.png">
-                <nav class="menu--left">
-                    <a href="/html/logueo.html">Logueate</a>
-                    <a href="/html/registro.html">Regístrate</a>
-                    <a href="/html/recuperar.html">Recuperar Contraseña</a>
-                </nav>
+            <div class="dropdown">
+                <a class="header__menu dropdown-btn"><i class="fa-solid fa-bars fa-2xl"></i></a>
+                <div class="dropdown-content">
+                    <img class="imagen_dropdown" src="/imagen/103.png" alt="User Image">
+                    <div class="content">
+                        <input class="content__input" type="text">
+                        <p class="content__p" id="user-correo">User correo</p>
+                        <p class="content__p" id="user-name">User name</p>
+                    </div>
+                    <nav class="menu--left">
+                        <!-- Puedes agregar enlaces de navegación aquí -->
+                    </nav>
+                </div>
             </div>
+            <h1 class="header__div--titulo">Home</h1>
+            <img class="header__div--img" src="/imagen/logo_xd.png" alt="Logo">
         </div>
-        <h1 class="header__div--titulo">Admin</h1>
-        <img class="header__div--img" src="/imagen/logo_xd.png" alt="Logo">
-    </div>
-</header>
-<main class="main">
-    <section class="main__section">
-        <article class="main__section--article">
-            <tr>
-                <td>id</td>
-            </tr>
-            <tr>
-                <td>nombre</td>
-            </tr>
-            <tr>
-                <td>Apellido</td>
-            </tr>
-            <tr>
-                <td>Correo</td>
-            </tr>
-            <tr>
-                <td>Contraseña</td>
-            </tr>
-        </article>
-    </section>
-</main>
+    </header>
+    <main class="main">
+        <section class="main__section">
+            <article class="main__section--article">
+                <h2 class="main__section--article--titulo">Datos Registrados</h2>
+                <div class="search-container">
+                    <input id="search-input" class="main__section--input" type="text" placeholder="Buscar por ID o Nombre">
+                    <button id="search-button">Buscar</button>
+                </div>
+                <table class="main__section--table" id="data-table">
+                    <thead class="main__section--table--thead">
+                        <tr class="main__section--table--thead--row">
+                            <th class="main__section--table--thead--cell">ID</th>
+                            <th class="main__section--table--thead--cell">Nombre</th>
+                            <th class="main__section--table--thead--cell">Apellido</th>
+                            <th class="main__section--table--thead--cell">Correo</th>
+                            <th class="main__section--table--thead--cell">Contraseña</th>
+                            <th class="main__section--table--thead--cell">Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody class="main__section--table--tbody">
+                        <!-- Las filas de datos se agregarán aquí dinámicamente -->
+                            
+                        </tr>
+                        <!-- Más filas se agregarán aquí -->
+                    </tbody>
+                </table>
+        </section>
+    </main>
+    <script type="module" src="/App_javascript/app_admin.js"></script>
 </body>
 </html>

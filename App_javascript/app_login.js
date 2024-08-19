@@ -34,6 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         console.log("No se encontró información del usuario.");
         // Redirige al inicio de sesión si no hay datos del usuario
-        window.location.href = '/Login/inicio_sesion.html';
+        window.location.href = '/html/logueo.html';
     }
 });

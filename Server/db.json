@@ -8,17 +8,6 @@
   ],
   "Users_registro": [
     {
-      "id": "",
-      "Nombre": "",
-      "Apellido": "",
-      "Fecha": "",
-      "Genero": "",
-      "Contraseña": "",
-      "Contraseña_confirmar": "",
-      "Correo": "",
-      "Confirmar_correo": ""
-    },
-    {
       "id": "6f95",
       "nombre": "Yesid",
       "apellido": "Pabon",
@@ -56,12 +45,10 @@
     },
     {
       "id": "1daa",
-      "nombre": "Samuel",
-      "apellido": "Rueda",
-      "fecha": "2024-08-14",
-      "genero": "on",
-      "contrasena": "Samuel11@",
-      "correo": "samuel@gmail.com"
+      "nombre": "John",
+      "apellido": "Becerra",
+      "correo": "johnBecerra@gmail.com",
+      "contrasena": "Samuel11@"
     },
     {
       "id": "888e",
@@ -74,11 +61,6 @@
     }
   ],
   "pregunta_1": [
-    {
-      "Seleccione_vehiculo": "",
-      "vehiculo": "",
-      "id": "7188"
-    },
     {
       "Seleccione_estado_clima": "",
       "Estado_clima": "",
