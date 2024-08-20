@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="/Css_home/logueo_preguntas2.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+
+
+
 </head>
 <body>
     <header class="header">
@@ -36,22 +40,23 @@
         <section class="main__titulos">
             <article class="main__section--article">
                 <br>
-                <input class="main__section--article--input" type="text" placeholder="Direccion origen">
+                <input id="direccion_origen" class="main__section--article--input" type="text" placeholder="Direccion origen"autocomplete="off">
                 <br>
-                <input class="main__section--article--input" type="text" placeholder="Destino destino">
+                <input id="direccion_destino" class="main__section--article--input" type="text" placeholder="Destino destino"autocomplete="off">
                 <br>
                 <div>
                     <button id="trasar" class="main__formu--button1" type="submit">Trasar</button>
+                    <button id="convertir" class="main__formu--button1">Convertir</button>
                 </div>
                 <br>
                 <button id="enviar_mapa" class="main__formu--button1 button1_width">Enviar</button>
             </article>
         </section> 
-        <!-- Aquí se agregará el div para el mapa -->
         <div class="mapa" id="mi_mapa"></div>
     </main>
-
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
     <script type="module" src="/App_javascript/app_preguntas2.js">
     </script>
 

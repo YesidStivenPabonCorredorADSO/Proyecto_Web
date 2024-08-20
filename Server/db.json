@@ -21,10 +21,8 @@
       "id": "0b75",
       "nombre": "Daniel",
       "apellido": "Gomez",
-      "fecha": "2024-08-14",
-      "genero": "on",
-      "contrasena": "Daniel1@",
       "correo": "daniel11@gmail.com",
+      "contrasena": "Daniel11@",
       "activo": true
     },
     {
@@ -39,13 +37,10 @@
     },
     {
       "id": "f17d",
-      "nombre": "Churro",
-      "apellido": "Neta",
-      "fecha": "2024-08-14",
-      "genero": "on",
-      "contrasena": "Churro1@",
+      "nombre": "Sebastian",
+      "apellido": "Ruiz",
       "correo": "churro@gmail.com",
-      "activo": false
+      "contrasena": ""
     },
     {
       "id": "1daa",
@@ -96,6 +91,75 @@
       "id": "8cd1",
       "vehiculo": "Motos",
       "ambiente": "Día lluvioso"
+    },
+    {
+      "id": "2970",
+      "vehiculo": "Automovil",
+      "ambiente": "Día nubloso"
+    },
+    {
+      "id": "b938",
+      "vehiculo": "Motos",
+      "ambiente": "Día nubloso"
+    }
+  ],
+  "pregunta_2": [
+    {
+      "Direccion_origen": "",
+      "Direccion_destino": "",
+      "id": "b868"
+    },
+    {
+      "id": "6290",
+      "origen": "7.1255169, -73.1182624",
+      "destino": "7.0732333, -73.1689196",
+      "coordenadas_origen": [
+        7.1255169,
+        -73.1182624
+      ],
+      "coordenadas_destino": [
+        7.0732333,
+        -73.1689196
+      ]
+    },
+    {
+      "id": "2c2c",
+      "origen": "6.9874808, -73.0504129",
+      "destino": "7.0732333, -73.1689196",
+      "coordenadas_origen": [
+        6.9874808,
+        -73.0504129
+      ],
+      "coordenadas_destino": [
+        7.0732333,
+        -73.1689196
+      ]
+    },
+    {
+      "id": "89cd",
+      "origen": "7.16698415, -73.1047294009737",
+      "destino": "7.0732333, -73.1689196",
+      "coordenadas_origen": [
+        7.16698415,
+        -73.1047294009737
+      ],
+      "coordenadas_destino": [
+        7.0732333,
+        -73.1689196
+      ]
+    },
+    {
+      "id": "772d",
+      "origen": "7.0625358, -73.0858228",
+      "destino": "7.0732333, -73.1689196",
+      "coordenadas_origen": [
+        7.0625358,
+        -73.0858228
+      ],
+      "coordenadas_destino": [
+        7.0732333,
+        -73.1689196
+      ]
     }
   ]
 }

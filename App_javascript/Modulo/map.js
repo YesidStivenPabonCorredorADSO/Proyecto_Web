@@ -13,14 +13,18 @@ export function agregaMarcador(map, coords) {
 }
 
 export function trazaRuta(map, startCoords, endCoords) {
-    // Agrega aquí la lógica para trazar la ruta entre startCoords y endCoords
-    // Puedes usar la API de OpenStreetMap o cualquier otra biblioteca de enrutamiento
+    L.Routing.control({
+        waypoints: [
+            L.latLng(startCoords[0], startCoords[1]),
+            L.latLng(endCoords[0], endCoords[1])
+        ],
+        routeWhileDragging: true,  // Permite arrastrar la ruta en el mapa
+        geocoder: L.Control.Geocoder.nominatim()  // Utiliza el geocodificador de Nominatim
+    }).addTo(map);
 }
 
+
 export function coordenadas(direccion, callback) {
-    // Aquí deberías implementar la lógica para obtener coordenadas a partir de una dirección
-    // Puedes usar una API de geocodificación
-    // Por ejemplo, usando la API de OpenStreetMap:
     fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${direccion}`)
         .then(response => response.json())
         .then(data => {
