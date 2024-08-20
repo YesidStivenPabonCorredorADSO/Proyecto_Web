@@ -1,49 +1,38 @@
-let map;
-let directions_calcular_ruta;
-let direction_mostrar_ruta;
+// Modulo/map.js
 
-export function Mapa(mapId, mapOptions) {
-    const mapElement = document.getElementById(mapId);
-    if (!mapElement) {
-        console.error('El elemento del mapa no se encontró.');
-        return;
-    }
-    map = new google.maps.Map(mapElement, mapOptions);
-    directions_calcular_ruta = new google.maps.DirectionsService();
-    direction_mostrar_ruta = new google.maps.DirectionsRenderer();
-    direction_mostrar_ruta.setMap(map);
+export function inicializaMapa(mapId, center, zoom) {
+    const map = L.map(mapId).setView(center, zoom);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    return map;
 }
 
-export function cordenadas(address, callback) {
-    const geocoder = new google.maps.Geocoder();
-    geocoder.geocode({ address: address }, (results, status) => {
-        if (status === 'OK' && results[0]) {
-            const location = results[0].geometry.location;
-            callback(location);
-        } else {
-            console.error('Error de geocodificación:', status);
+export function agregaMarcador(map, coords) {
+    L.marker(coords).addTo(map);
+}
+
+export function trazaRuta(map, startCoords, endCoords) {
+    // Agrega aquí la lógica para trazar la ruta entre startCoords y endCoords
+    // Puedes usar la API de OpenStreetMap o cualquier otra biblioteca de enrutamiento
+}
+
+export function coordenadas(direccion, callback) {
+    // Aquí deberías implementar la lógica para obtener coordenadas a partir de una dirección
+    // Puedes usar una API de geocodificación
+    // Por ejemplo, usando la API de OpenStreetMap:
+    fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${direccion}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data && data.length > 0) {
+                const { lat, lon } = data[0];
+                callback([parseFloat(lat), parseFloat(lon)]);
+            } else {
+                callback(null);
+            }
+        })
+        .catch(error => {
+            console.error('Error al obtener coordenadas:', error);
             callback(null);
-        }
-    });
-}
-
-export function traza_ruta(startCoords, endCoords) {
-    if (!startCoords || !endCoords) {
-        console.error('Las coordenadas de inicio o fin no son válidas.');
-        return;
-    }
-
-    const request = {
-        origin: startCoords,
-        destination: endCoords,
-        travelMode: google.maps.TravelMode.DRIVING
-    };
-
-    directions_calcular_ruta.route(request, (result, status) => {
-        if (status === google.maps.DirectionsStatus.OK) {
-            direction_mostrar_ruta.setDirections(result);
-        } else {
-            console.error('Error al trazar la ruta:', status);
-        }
-    });
+        });
 }

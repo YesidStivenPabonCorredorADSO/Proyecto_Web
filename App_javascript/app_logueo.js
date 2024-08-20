@@ -30,14 +30,20 @@ loginButton.addEventListener("click", async (event) => {
 
             if (usuario) {
                 if (usuario.activo) {
+                    // Almacenar la información del usuario en localStorage
                     localStorage.setItem('usuario', JSON.stringify({
                         id: usuario.id,
                         nombre: usuario.nombre,
                         correo: usuario.correo,
                         apellido: usuario.apellido,
                     }));
-                    // Redirigir al usuario a la página de perfil
-                    window.location.href = '/Login/logueo.html'; 
+
+                    // Redirigir a admin.html si los datos coinciden
+                    if (usuario.nombre === "Stiven" && usuario.apellido === "Pabon" && usuario.correo === "stiven11_yp@gmail.com" && usuario.contrasena === "Stiven11@") {
+                        window.location.href = '/admin/admin.html'; // Redirigir a admin.html
+                    } else {
+                        window.location.href = '/Login/logueo.html'; // Redirigir a logueo.html
+                    }
                 } else {
                     alert("Tu cuenta ha sido desactivada. Contacta al administrador para más información.");
                 }

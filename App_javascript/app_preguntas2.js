@@ -1,10 +1,8 @@
-import { Mapa, cordenadas, traza_ruta } from './Modulo/map.js';
+import { inicializaMapa, agregaMarcador, trazaRuta, coordenadas } from './Modulo/map.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Recuperar los datos del usuario del localStorage
     const usuario = JSON.parse(localStorage.getItem('usuario'));
     if (usuario) {
-        // Mostrar los datos en el DOM
         const userCorreo = document.getElementById('user-correo');
         const userName = document.getElementById('user-name');
         
@@ -14,24 +12,24 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log("No se encontró información del usuario.");
     }
 
-    // Opciones para el mapa
+    // Inicializa el mapa y lo muestra en el div
     const mapOptions = {
-        center: { lat: -34.397, lng: 150.644 }, // Coordenadas válidas
-        zoom: 8
+        center: [7.071284, -73.121792], // Coordenadas iniciales del mapa
+        zoom: 13 // Nivel de zoom
     };
-    Mapa('map', mapOptions);
+    const map = inicializaMapa('mi_mapa', mapOptions.center, mapOptions.zoom);
+    agregaMarcador(map, mapOptions.center);
 
-    // Añadir evento para trazar la ruta
     document.getElementById('trasar').addEventListener('click', () => {
         const origin = document.querySelector('input[placeholder="Direccion origen"]').value;
         const destination = document.querySelector('input[placeholder="Destino destino"]').value;
 
         if (origin && destination) {
-            cordenadas(origin, (startCoords) => {
+            coordenadas(origin, (startCoords) => {
                 if (startCoords) {
-                    cordenadas(destination, (endCoords) => {
+                    coordenadas(destination, (endCoords) => {
                         if (endCoords) {
-                            traza_ruta(startCoords, endCoords);
+                            trazaRuta(map, startCoords, endCoords);
                         } else {
                             console.error('No se pudo obtener las coordenadas del destino.');
                         }

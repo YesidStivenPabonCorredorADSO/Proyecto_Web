@@ -45,7 +45,7 @@
       "genero": "on",
       "contrasena": "Churro1@",
       "correo": "churro@gmail.com",
-      "activo": true
+      "activo": false
     },
     {
       "id": "1daa",
@@ -64,6 +64,16 @@
       "contrasena": "Olave11@",
       "correo": "olave@gmail.com",
       "activo": true
+    },
+    {
+      "id": "1a14",
+      "nombre": "Stiven",
+      "apellido": "Pabon",
+      "fecha": "2005-06-11",
+      "genero": "on",
+      "contrasena": "Stiven11@",
+      "correo": "stiven11_yp@gmail.com",
+      "activo": true
     }
   ],
   "pregunta_1": [
@@ -80,6 +90,11 @@
     {
       "id": "4498",
       "vehiculo": "Automovil",
+      "ambiente": "Día lluvioso"
+    },
+    {
+      "id": "8cd1",
+      "vehiculo": "Motos",
       "ambiente": "Día lluvioso"
     }
   ]
