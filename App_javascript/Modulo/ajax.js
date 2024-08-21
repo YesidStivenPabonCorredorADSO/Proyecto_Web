@@ -2,7 +2,7 @@ import { URL } from "../Modulo/config.js";
 
 export const obtenerUsuarios = async (endpoint) => {
   try {
-    const url = `${URL.replace(/\/$/, "")}/${endpoint}`;
+    const url = `${URL}${endpoint}`;
     console.log("Fetching URL:", url);
 
     const response = await fetch(url, {
@@ -25,7 +25,7 @@ export const obtenerUsuarios = async (endpoint) => {
   }
 };
 
-
+// Enviar datos de inicio de sesión
 export const enviar = async (datos, endpoint) => {
     try {
         const response = await fetch(`${URL.replace(/\/$/, "")}/${endpoint}`, {
@@ -47,7 +47,11 @@ export const enviar = async (datos, endpoint) => {
         console.error('Error al enviar los datos:', error);
         return { error: error.message };
     }
-};
+}
+
+
+
+
 
 export const editar = async (id, data, endpoint) => {
   try {

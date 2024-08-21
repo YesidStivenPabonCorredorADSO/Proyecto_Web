@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             try {
-                const resultado = await enviar(datos, 'pregunta_2');
+                const resultado = await enviar(datos, 'ubicaciones');
                 console.log('Datos enviados con éxito:', resultado);
                 
                 // Redirigir a otro HTML

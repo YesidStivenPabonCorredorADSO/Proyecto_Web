@@ -1,47 +1,43 @@
 import { validacion_select } from "./Modulo/preguntas.js";
-import { enviar } from "./Modulo/ajax.js";
+import { enviar, obtenerUsuarios } from "./Modulo/ajax.js";
 
 const $select_vehiculo = document.getElementById("vehiculo");
 const $select_ambiente = document.getElementById("ambiente");
 const $button_preguntas = document.getElementById("button_preguntas");
 
-const calcularPorcentaje = (vehiculo, ambiente) => {
-    let porcentaje = 0;
-    switch (vehiculo) {
-        case "Motos":
-            porcentaje += 17;
-            break;
-        case "Automovil":
-            porcentaje += 20;
-            break;
-        case "Cicla":
-            porcentaje += 5;
-            break;
-        case "Camion":
-            porcentaje += 25;
-            break;
+// Función para cargar los datos dinámicamente en los selects
+const cargarDatosDinamicos = async () => {
+    try {
+        // Obtener datos desde las fuentes
+        const vehiculos = await obtenerUsuarios('vehiculos');
+        const estadosClima = await obtenerUsuarios('estados_clima');
+
+        // Rellenar el select de vehículos
+        vehiculos.forEach(vehiculo => {
+            const option = document.createElement('option');
+            option.value = vehiculo.vehiculo;
+            option.textContent = vehiculo.vehiculo;
+            $select_vehiculo.appendChild(option);
+        });
+
+        // Rellenar el select de estados de clima
+        estadosClima.forEach(estado => {
+            const option = document.createElement('option');
+            option.value = estado.estados;
+            option.textContent = estado.estados;
+            $select_ambiente.appendChild(option);
+        });
+
+    } catch (error) {
+        console.error("Error al cargar los datos dinámicos:", error);
     }
-    switch (ambiente) {
-        case "Día soleado":
-            porcentaje += 5;
-            break;
-        case "Día lluvioso":
-            porcentaje += 15;
-            break;
-        case "Día nubloso":
-            porcentaje += 5;
-            break;
-        case "Día tormenta":
-            porcentaje += 30;
-            break;
-        case "Día neblina":
-            porcentaje += 15;
-            break;
-    }
-    return Math.max(0, Math.min(100, porcentaje));
-    
 };
-document.addEventListener('DOMContentLoaded', () => {
+
+document.addEventListener('DOMContentLoaded', async () => {
+    // Cargar los datos dinámicos al cargar la página
+    await cargarDatosDinamicos();
+
+    // Obtener y mostrar la información del usuario
     const usuario = JSON.parse(localStorage.getItem('usuario'));
     if (usuario) {
         const userCorreo = document.getElementById('user-correo');
@@ -53,12 +49,15 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log("No se encontró información del usuario.");
     }
 });
+
 $select_vehiculo.addEventListener("change", () => {
     validacion_select();
 });
+
 $select_ambiente.addEventListener("change", () => {
     validacion_select();
 });
+
 const manejarEnvio = async () => {
     const valid = validacion_select();
     if (valid) {
@@ -72,7 +71,7 @@ const manejarEnvio = async () => {
             ambiente,
             porcentaje,
         };
-        const response = await enviar(data, 'pregunta_1');
+        const response = await enviar(data, 'preguntas');
         if (response.error) {
             console.error("Error en la respuesta:", response.error);
         } else {
@@ -84,6 +83,7 @@ const manejarEnvio = async () => {
         console.log("Formulario no válido. Revisa los campos.");
     }
 };
+
 $button_preguntas.addEventListener("click", (event) => {
     event.preventDefault();
     manejarEnvio();

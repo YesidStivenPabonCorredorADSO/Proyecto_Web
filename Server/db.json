@@ -1,22 +1,35 @@
 {
   "users": [
     {
-      "id": "",
-      "correo": "",
-      "contraseña": ""
-    }
-  ],
-  "Users_registro": [
+      "id": "6f95",
+      "nombre": "Yesid",
+      "apellido": "Pabon",
+      "correo": "yesidpabon145@gmail.com",
+      "contrasena": "Yesidc1@"
+    },
     {
       "id": "6f95",
       "nombre": "Yesid",
       "apellido": "Pabon",
-      "fecha": "2024-08-13",
-      "genero": "on",
-      "contrasena": "Yesidc1@",
       "correo": "yesidpabon145@gmail.com",
-      "activo": true
+      "contrasena": "Yesidc1@"
     },
+    {
+      "id": "6f95",
+      "nombre": "Daniel",
+      "apellido": "Gomez",
+      "correo": "gomez145@gmail.com",
+      "contrasena": "Yesidc1@"
+    },
+    {
+      "id": "f126",
+      "nombre": "Sebastian",
+      "apellido": "Ruiz",
+      "correo": "daniel11@gmail.com",
+      "contrasena": "Daniel11@"
+    }
+  ],
+  "registros": [
     {
       "id": "1a14",
       "nombre": "Stiven",
@@ -38,7 +51,7 @@
       "activo": true
     }
   ],
-  "pregunta_1": [
+  "preguntas": [
     {
       "Seleccione_estado_clima": "",
       "Estado_clima": "",
@@ -75,34 +88,10 @@
       "ambiente": "Día neblina"
     },
     {
-      "id": "eb99",
-      "vehiculo": "Motos",
-      "ambiente": "Día lluvioso",
-      "porcentaje": 2
-    },
-    {
       "id": "23c6",
       "vehiculo": "Camion",
       "ambiente": "Día neblina",
       "porcentaje": 10
-    },
-    {
-      "id": "737b",
-      "vehiculo": "Motos",
-      "ambiente": "Día neblina",
-      "porcentaje": 2
-    },
-    {
-      "id": "0c0f",
-      "vehiculo": "Motos",
-      "ambiente": "Día tormenta",
-      "porcentaje": 0
-    },
-    {
-      "id": "58f1",
-      "vehiculo": "Automovil",
-      "ambiente": "Día nubloso",
-      "porcentaje": 5
     },
     {
       "id": "726e",
@@ -123,7 +112,7 @@
       "porcentaje": 35
     }
   ],
-  "pregunta_2": [
+  "ubicaciones": [
     {
       "Direccion_origen": "",
       "Direccion_destino": "",
@@ -286,7 +275,7 @@
       ]
     }
   ],
-  "Resultado": [
+  "resultados": [
     {
       "Resultado": "",
       "id": "7b4b"
@@ -306,6 +295,51 @@
     {
       "id": "a866",
       "porcentaje": "35"
+    }
+  ],
+  "vehiculos": [
+    {
+      "id": "",
+      "vehiculo": "Automovil"
+    },
+    {
+      "id": "",
+      "vehiculo": "Camion"
+    },
+    {
+      "id": "",
+      "vehiculo": "Motos"
+    },
+    {
+      "id": "",
+      "vehiculo": "Bicliqueta"
+    },
+    {
+      "id": "",
+      "vehiculo": "Camion"
+    }
+  ],
+  "estados_clima": [
+    {
+      "id": "",
+      "estados": "Dia soleado"
+    },
+    {
+      "id": "",
+      "estados": "Día lluvioso"
+    },
+    {
+      "id": "",
+      "estados": "Día nubloso"
+    },
+    {
+      "id": "",
+      "estados": "Día tormenta"
+    }
+  ],
+  "porcentaje":[
+    {
+      "valor":""
     }
   ]
 }

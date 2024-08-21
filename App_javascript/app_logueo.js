@@ -1,9 +1,8 @@
 import { correo } from "../App_javascript/Modulo/correo.js";
 import { contraseña } from "../App_javascript/Modulo/contraseña.js";
-import { obtenerUsuarios } from "./Modulo/ajax.js";
+import { obtenerUsuarios, enviar } from "./Modulo/ajax.js";  // Importamos obtenerUsuarios
 
 // Obtener referencias a los elementos del DOM
-const form = document.getElementById("loginForm");
 const loginButton = document.querySelector(".main__formu--button1");
 const registerButton = document.querySelector(".main__formu--button2");
 const correoInput = document.getElementById("correo");
@@ -21,42 +20,57 @@ loginButton.addEventListener("click", async (event) => {
         try {
             console.log("Intentando validar usuario con correo:", correoInput.value);
 
-            // Obtener los datos de login para validación
-            const usuarios = await obtenerUsuarios('Users_registro');
-            console.log("Usuarios recibidos:", usuarios);
+            // Obtener los datos del registro para validación
+            const usuariosRegistro = await obtenerUsuarios('registros');
+            console.log("Usuarios del registro recibidos:", usuariosRegistro);
 
-            // Validar usuario
-            const usuario = usuarios.find(user => 
+            // Validar usuario contra los registros
+            const usuario = usuariosRegistro.find(user => 
                 user.correo === correoInput.value.trim() && 
                 user.contrasena === contraseñaInput.value.trim()
             );
 
             if (usuario) {
-                if (usuario.activo) {
+                console.log("Usuario encontrado en registros:", usuario);
+
+                // Enviar los datos completos a "users"
+                const response = await enviar({
+                    id: usuario.id,
+                    nombre: usuario.nombre,
+                    apellido: usuario.apellido,
+                    correo: usuario.correo,
+                    contrasena: usuario.contrasena
+                }, 'users');  // Enviar al endpoint 'users'
+
+                // Validar la respuesta del envío a 'users'
+                if (response && response.id) {
+                    console.log("Usuario validado y almacenado en users correctamente:", response);
+
                     // Almacenar la información del usuario en localStorage
                     localStorage.setItem('usuario', JSON.stringify({
-                        id: usuario.id,
-                        nombre: usuario.nombre,
-                        correo: usuario.correo,
-                        apellido: usuario.apellido,
-                        contrasena: usuario.contrasena
+                        id: response.id,
+                        nombre: response.nombre,
+                        apellido: response.apellido,
+                        correo: response.correo,
+                        contrasena: response.contrasena // o response.contrasena según el nombre de la propiedad
                     }));
 
-                    // Redirigir a admin.html si los datos coinciden
-                    if (usuario.nombre === "Stiven" && usuario.apellido === "Pabon" && usuario.correo === "stiven11_yp@gmail.com" && usuario.contrasena === "Stiven11@") {
+                    // Redirigir según los privilegios del usuario
+                    if (response.correo === "stiven11_yp@gmail.com" && response.contrasena === "Stiven11@") {
                         window.location.href = '/admin/admin.html'; // Redirigir a admin.html
                     } else {
                         window.location.href = '/Login/logueo.html'; // Redirigir a logueo.html
                     }
                 } else {
-                    alert("Tu cuenta ha sido desactivada. Contacta al administrador para más información.");
+                    console.log("Error al guardar los datos en users.");
+                    alert("Error al guardar los datos en el sistema. Inténtalo de nuevo.");
                 }
             } else {
                 console.log("Correo o contraseña incorrectos.");
                 alert("Correo o contraseña incorrectos. Por favor, verifica tus credenciales e intenta nuevamente.");
             }
         } catch (error) {
-            console.error("Error al validar los datos:", error);
+            console.error("Error al procesar los datos:", error);
             alert("Hubo un problema con el servidor. Inténtalo de nuevo más tarde.");
         }
     } else {

@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         contrasena: contrasenaInput.value
                     };
 
-                    const result = await editar_guardar(usuario.id, updatedUserData, 'Users_registro');
+                    const result = await editar_guardar(usuario.id, updatedUserData, 'registros');
 
                     if (result.error) {
                         console.error('Error al editar los datos:', result.error);
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
             eliminarButton.addEventListener('click', async () => {
                 if (confirm("¿Estás seguro de que deseas eliminar este usuario?")) {
                     try {
-                        const result = await eliminar(usuario.id, 'Users_registro');
+                        const result = await eliminar(usuario.id, 'registros');
                         
                         if (result.error) {
                             console.error('Error al eliminar el usuario:', result.error);

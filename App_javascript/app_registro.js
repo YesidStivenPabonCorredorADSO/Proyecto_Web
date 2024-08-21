@@ -92,7 +92,7 @@ submitButton.addEventListener("click", async (event) => {
             activo: true  // Activar usuario automáticamente
         };
 
-        const response = await enviar(data, `Users_registro`);
+        const response = await enviar(data, `registro`);
         if (response.error) {
             console.error("Error en la respuesta:", response.error);
         } else {
