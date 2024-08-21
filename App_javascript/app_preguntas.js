@@ -26,19 +26,20 @@ const calcularPorcentaje = (vehiculo, ambiente) => {
             porcentaje += 5;
             break;
         case "Día lluvioso":
-            porcentaje -= 15;
+            porcentaje += 15;
             break;
         case "Día nubloso":
             porcentaje += 5;
             break;
         case "Día tormenta":
-            porcentaje -= 30;
+            porcentaje += 30;
             break;
         case "Día neblina":
-            porcentaje -= 15;
+            porcentaje += 15;
             break;
     }
     return Math.max(0, Math.min(100, porcentaje));
+    
 };
 document.addEventListener('DOMContentLoaded', () => {
     const usuario = JSON.parse(localStorage.getItem('usuario'));
@@ -77,7 +78,7 @@ const manejarEnvio = async () => {
         } else {
             localStorage.setItem('porcentaje', porcentaje);  // Guardar porcentaje en localStorage
             console.log("Porcentaje guardado:", porcentaje);  // Confirmación de almacenamiento
-            window.location.href = '/Login/resultado.html';  // Asegúrate de que la ruta sea correcta
+            window.location.href = '/Login/logueo_preguntas2.html';  // Asegúrate de que la ruta sea correcta
         }
     } else {
         console.log("Formulario no válido. Revisa los campos.");

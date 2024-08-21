@@ -126,10 +126,10 @@ document.addEventListener('DOMContentLoaded', () => {
                             console.error('Error al eliminar el usuario:', result.error);
                             alert('Error al eliminar el usuario. Inténtalo de nuevo más tarde.');
                         } else {
+                            window.location.href = '/Login/logueo.html'; 
                             console.log('Usuario eliminado:', result);
                             alert('Usuario eliminado exitosamente.');
                             localStorage.clear();
-                            window.location.href = '/Login/logueo.html'; 
                         }
                     } catch (error) {
                         console.error('Error al eliminar el usuario:', error);

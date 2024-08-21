@@ -52,7 +52,7 @@ export const enviar = async (datos, endpoint) => {
 export const editar = async (id, data, endpoint) => {
   try {
     const response = await fetch(`${URL.replace(/\/$/, "")}/${endpoint}/${id}`, {
-      method: 'PUT',
+      method: 'PATCH',
       body: JSON.stringify(data),
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
