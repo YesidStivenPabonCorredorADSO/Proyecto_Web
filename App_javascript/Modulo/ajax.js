@@ -126,3 +126,25 @@ export const actualizarEstadoUsuario = async (id, activo) => {
     throw error;
   }
 };
+// ajax.js
+
+export const eliminar = async (id, endpoint) => {
+  try {
+    const response = await fetch(`${URL.replace(/\/$/, "")}/${endpoint}/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error(`No se pudo eliminar el usuario. Status: ${response.status}`);
+    }
+
+    console.log('Usuario eliminado:', id);
+    return id; // Retorna el ID del usuario eliminado
+  } catch (error) {
+    console.error('Error al eliminar el usuario:', error);
+    return { error: error.message };
+  }
+};

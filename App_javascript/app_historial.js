@@ -1,7 +1,7 @@
-// app_historial.js
 document.addEventListener('DOMContentLoaded', () => {
     // Recuperar los datos de la ruta del localStorage
     const datosRuta = JSON.parse(localStorage.getItem('ruta'));
+    const porcentaje = localStorage.getItem('porcentaje'); // Recuperar el porcentaje almacenado
 
     if (datosRuta) {
         // Mostrar los datos de la ruta en la página
@@ -13,6 +13,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Opcional: eliminar los datos del localStorage después de usarlos
         localStorage.removeItem('ruta');
+    }
+
+    // Mostrar el porcentaje calculado
+    const porcentajeElement = document.getElementById('porcentaje');
+    if (porcentajeElement && porcentaje) {
+        porcentajeElement.textContent = `Porcentaje calculado: ${porcentaje}%`;
+    } else {
+        console.log("No se encontró el porcentaje en el localStorage.");
     }
 
     // Recuperar la información del usuario del localStorage

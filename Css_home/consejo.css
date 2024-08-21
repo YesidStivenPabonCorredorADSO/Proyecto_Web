@@ -118,7 +118,7 @@
 .main__section--article {
     border-radius: 20px;
     width: 470px;
-    height: 433px;
+    height: 568px;
     padding: 5px;
     margin: 41px;
     background: #DFF0FF;
@@ -134,13 +134,13 @@
     margin: 20px;
 }
 .flex--izquierdo--p{
-    width: 51px;
+    width:300px;
     border: solid 1px black;
     border-radius: 20px;
     padding: 5px;
 }
 .flex--derecho-p{
-    width: 51px;
+    width:300px;
     border: solid 1px black;
     border-radius: 20px;
     padding: 5px;
@@ -152,4 +152,4 @@
     width: 300px;
     height: 30px;
     color: #FFFF;
-  }
+}

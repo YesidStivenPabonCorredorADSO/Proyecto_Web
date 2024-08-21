@@ -1,4 +1,6 @@
-import { editar_guardar } from "../App_javascript/Modulo/ajax.js";
+// app_perfil.js
+
+import { editar_guardar, eliminar } from "../App_javascript/Modulo/ajax.js";
 
 document.addEventListener('DOMContentLoaded', () => {
     const usuario = JSON.parse(localStorage.getItem('usuario'));
@@ -15,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const editarButton = document.getElementById('Button_editar');
         const guardarButton = document.getElementById('Button_guardar');
         const cerrarSesionButton = document.getElementById('Button_cerrar_sesion');
+        const eliminarButton = document.getElementById('Button_eliminar');
 
         // Inicializar los campos con la información del usuario
         if (userCorreo) userCorreo.textContent = `Correo: ${usuario.correo || 'No disponible'}`;
@@ -22,11 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (nombreInput) nombreInput.value = usuario.nombre || '';
         if (apellidoInput) apellidoInput.value = usuario.apellido || '';
         if (correoInput) correoInput.value = usuario.correo || '';
-        if (contrasenaInput) contrasenaInput.value = usuario.contrasena || ''; // Mostrar la contraseña
+        if (contrasenaInput) contrasenaInput.value = usuario.contrasena || ''; 
         if (estadoActivoInput) estadoActivoInput.textContent = `Estado Activo: ${usuario.estado_activo ? 'Sí' : 'No'}`;
-
-        // Opcionalmente puedes ocultar la contraseña en el input cambiando el tipo
-        // contrasenaInput.setAttribute('type', 'text'); // Cambia 'text' a 'password' si deseas ocultarla
 
         const updateLocalStorage = () => {
             localStorage.setItem('usuario', JSON.stringify(usuario));
@@ -82,7 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         apellido: apellidoInput.value,
                         correo: correoInput.value,
                         contrasena: contrasenaInput.value
-                        // No se actualiza el estado activo aquí
                     };
 
                     const result = await editar_guardar(usuario.id, updatedUserData, 'Users_registro');
@@ -114,6 +113,29 @@ document.addEventListener('DOMContentLoaded', () => {
             cerrarSesionButton.addEventListener('click', () => {
                 localStorage.clear();
                 window.location.href = '/Login/logueo.html';
+            });
+        }
+
+        if (eliminarButton) {
+            eliminarButton.addEventListener('click', async () => {
+                if (confirm("¿Estás seguro de que deseas eliminar este usuario?")) {
+                    try {
+                        const result = await eliminar(usuario.id, 'Users_registro');
+                        
+                        if (result.error) {
+                            console.error('Error al eliminar el usuario:', result.error);
+                            alert('Error al eliminar el usuario. Inténtalo de nuevo más tarde.');
+                        } else {
+                            console.log('Usuario eliminado:', result);
+                            alert('Usuario eliminado exitosamente.');
+                            localStorage.clear();
+                            window.location.href = '/Login/logueo.html'; 
+                        }
+                    } catch (error) {
+                        console.error('Error al eliminar el usuario:', error);
+                        alert('Hubo un error al eliminar el usuario. Inténtalo de nuevo más tarde.');
+                    }
+                }
             });
         }
     } else {
