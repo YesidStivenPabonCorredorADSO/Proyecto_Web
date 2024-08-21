@@ -1,5 +1,6 @@
+// app_preguntas2.js
 import { inicializaMapa, agregaMarcador, trazaRuta, coordenadas } from './Modulo/map.js';
-import { enviar } from './Modulo/ajax.js';  // Asegúrate de que la ruta es correcta
+import { enviar } from './Modulo/ajax.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     const usuario = JSON.parse(localStorage.getItem('usuario'));
@@ -23,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let startCoords = null;
     let endCoords = null;
 
-    // Función para convertir la dirección en coordenadas y actualizar el input
     function convertirDireccion(direccion, inputId, callback) {
         coordenadas(direccion, (coords) => {
             if (coords) {
@@ -39,7 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Evento para el botón "Convertir"
     document.getElementById('convertir').addEventListener('click', () => {
         const direccionOrigen = document.getElementById('direccion_origen').value;
         const direccionDestino = document.getElementById('direccion_destino').value;
@@ -57,7 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Evento para trazar la ruta al hacer clic en el botón "Trasar"
     document.getElementById('trasar').addEventListener('click', () => {
         if (startCoords && endCoords) {
             trazaRuta(map, startCoords, endCoords);
@@ -66,7 +64,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Evento para el botón "Enviar"
+    document.getElementById('Guardar_datos').addEventListener('click', () => {
+        if (startCoords && endCoords) {
+            const direccionOrigen = document.getElementById('direccion_origen').value;
+            const direccionDestino = document.getElementById('direccion_destino').value;
+
+            const datos = {
+                origen: direccionOrigen,
+                destino: direccionDestino,
+                coordenadas_origen: startCoords,
+                coordenadas_destino: endCoords
+            };
+
+            localStorage.setItem('ruta', JSON.stringify(datos));
+            alert('Datos guardados exitosamente.');
+        } else {
+            console.error('Faltan datos para guardar.');
+        }
+    });
+
     document.getElementById('enviar_mapa').addEventListener('click', async () => {
         const direccionOrigen = document.getElementById('direccion_origen').value;
         const direccionDestino = document.getElementById('direccion_destino').value;
@@ -82,6 +98,9 @@ document.addEventListener('DOMContentLoaded', () => {
             try {
                 const resultado = await enviar(datos, 'pregunta_2');
                 console.log('Datos enviados con éxito:', resultado);
+                
+                // Redirigir a otro HTML
+                window.location.href = '/Login/resultado.html'; // Reemplaza con el nombre del archivo HTML al que deseas redirigir
             } catch (error) {
                 console.error('Error al enviar los datos:', error);
             }

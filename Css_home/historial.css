@@ -117,8 +117,8 @@
 }
 .main__section--article {
     border-radius: 20px;
-    width: 470px;
-    height: 108px;
+    width: 600px;
+    height: 138px;
     padding: 5px;
     margin: 41px;
     display: flex;
@@ -128,16 +128,15 @@
     background: #DFF0FF;
 }
 .main__section--article--div{
-    width: 426px;
-    height: 361px;
     background-color: var(--color--fondo--map);
     border-radius: 20px;
 }
 .div__inputs{
     height: 20px;
-    margin: 30px;
+    margin: 20px;
 }
 .div__inputs_1{
+    width: 273px;
     height: 30px;
     outline: none;
     border: none;

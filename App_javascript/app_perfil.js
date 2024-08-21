@@ -5,12 +5,13 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('Usuario cargado:', usuario);
 
     if (usuario) {
-        const userCorreo = document.getElementById('user-correo');
-        const userName = document.getElementById('user-name');
         const nombreInput = document.getElementById('nombre');
         const apellidoInput = document.getElementById('apellido');
         const correoInput = document.getElementById('correo');
         const contrasenaInput = document.getElementById('contrasena');
+        const estadoActivoInput = document.getElementById('estado_activo');
+        const userCorreo = document.getElementById('user-correo');
+        const userName = document.getElementById('user-name');
         const editarButton = document.getElementById('Button_editar');
         const guardarButton = document.getElementById('Button_guardar');
         const cerrarSesionButton = document.getElementById('Button_cerrar_sesion');
@@ -21,7 +22,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (nombreInput) nombreInput.value = usuario.nombre || '';
         if (apellidoInput) apellidoInput.value = usuario.apellido || '';
         if (correoInput) correoInput.value = usuario.correo || '';
-        if (contrasenaInput) contrasenaInput.value = usuario.contrasena || '';
+        if (contrasenaInput) contrasenaInput.value = usuario.contrasena || ''; // Mostrar la contraseña
+        if (estadoActivoInput) estadoActivoInput.textContent = `Estado Activo: ${usuario.estado_activo ? 'Sí' : 'No'}`;
+
+        // Opcionalmente puedes ocultar la contraseña en el input cambiando el tipo
+        // contrasenaInput.setAttribute('type', 'text'); // Cambia 'text' a 'password' si deseas ocultarla
 
         const updateLocalStorage = () => {
             localStorage.setItem('usuario', JSON.stringify(usuario));
@@ -59,13 +64,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (editarButton) {
             editarButton.addEventListener('click', () => {
-                // Habilitar campos para edición
                 nombreInput.removeAttribute('disabled');
                 apellidoInput.removeAttribute('disabled');
                 correoInput.removeAttribute('disabled');
                 contrasenaInput.removeAttribute('disabled');
-                editarButton.style.display = 'none'; // Ocultar el botón de editar
-                guardarButton.style.display = 'inline'; // Mostrar el botón de guardar
+                editarButton.style.display = 'none';
+                guardarButton.style.display = 'inline';
             });
         }
 
@@ -73,14 +77,14 @@ document.addEventListener('DOMContentLoaded', () => {
             guardarButton.addEventListener('click', async () => {
                 try {
                     const updatedUserData = {
-                        id: usuario.id,  // Incluyendo el ID en los datos actualizados
+                        id: usuario.id,
                         nombre: nombreInput.value,
                         apellido: apellidoInput.value,
                         correo: correoInput.value,
                         contrasena: contrasenaInput.value
+                        // No se actualiza el estado activo aquí
                     };
 
-                    // Usando la función editar_guardar
                     const result = await editar_guardar(usuario.id, updatedUserData, 'Users_registro');
 
                     if (result.error) {
@@ -90,16 +94,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         console.log('Datos actualizados en el servidor:', result);
                         alert('Datos actualizados exitosamente.');
 
-                        // Actualizar el localStorage con la nueva información del usuario
                         localStorage.setItem('usuario', JSON.stringify(updatedUserData));
                         
-                        // Deshabilitar campos después de guardar
                         nombreInput.setAttribute('disabled', 'true');
                         apellidoInput.setAttribute('disabled', 'true');
                         correoInput.setAttribute('disabled', 'true');
                         contrasenaInput.setAttribute('disabled', 'true');
-                        editarButton.style.display = 'inline'; // Mostrar el botón de editar
-                        guardarButton.style.display = 'none'; // Ocultar el botón de guardar
+                        editarButton.style.display = 'inline'; 
+                        guardarButton.style.display = 'none';
                     }
                 } catch (error) {
                     console.error('Error al enviar la edición:', error);
@@ -110,7 +112,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (cerrarSesionButton) {
             cerrarSesionButton.addEventListener('click', () => {
-                // Limpiar localStorage y redirigir a la página de inicio de sesión
                 localStorage.clear();
                 window.location.href = '/Login/logueo.html';
             });

@@ -89,6 +89,7 @@ submitButton.addEventListener("click", async (event) => {
             genero: document.querySelector('input[name="radiobutton"]:checked')?.value || "",
             contrasena: crearContraInput.value,
             correo: ingresarCorreoInput.value,
+            activo: true  // Activar usuario automáticamente
         };
 
         const response = await enviar(data, `Users_registro`);

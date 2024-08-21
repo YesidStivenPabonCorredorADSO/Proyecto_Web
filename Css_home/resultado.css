@@ -185,4 +185,5 @@
     border: solid 1px var(--color--borde--button);
     outline: none;
     padding: 10px;
+    text-align: center;
 }

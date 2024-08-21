@@ -26,7 +26,10 @@ loginButton.addEventListener("click", async (event) => {
             console.log("Usuarios recibidos:", usuarios);
 
             // Validar usuario
-            const usuario = usuarios.find(user => user.correo === correoInput.value.trim() && user.contrasena === contraseñaInput.value.trim());
+            const usuario = usuarios.find(user => 
+                user.correo === correoInput.value.trim() && 
+                user.contrasena === contraseñaInput.value.trim()
+            );
 
             if (usuario) {
                 if (usuario.activo) {
@@ -36,6 +39,7 @@ loginButton.addEventListener("click", async (event) => {
                         nombre: usuario.nombre,
                         correo: usuario.correo,
                         apellido: usuario.apellido,
+                        contrasena: usuario.contrasena
                     }));
 
                     // Redirigir a admin.html si los datos coinciden

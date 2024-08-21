@@ -25,27 +25,28 @@ export const obtenerUsuarios = async (endpoint) => {
   }
 };
 
+
 export const enviar = async (datos, endpoint) => {
-  try {
-    const response = await fetch(`${URL.replace(/\/$/, "")}/${endpoint}`, {
-      method: 'POST',
-      body: JSON.stringify(datos),
-      headers: {
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-    });
+    try {
+        const response = await fetch(`${URL.replace(/\/$/, "")}/${endpoint}`, {
+            method: 'POST',
+            body: JSON.stringify(datos),
+            headers: {
+                'Content-Type': 'application/json; charset=UTF-8',
+            },
+        });
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log('Datos enviados exitosamente:', data);
+        return data;
+    } catch (error) {
+        console.error('Error al enviar los datos:', error);
+        return { error: error.message };
     }
-
-    const data = await response.json();
-    console.log('Datos enviados exitosamente:', data);
-    return data;
-  } catch (error) {
-    console.error('Error al enviar los datos:', error);
-    return { error: error.message };
-  }
 };
 
 export const editar = async (id, data, endpoint) => {
@@ -70,23 +71,23 @@ export const editar = async (id, data, endpoint) => {
     return { error: error.message };
   }
 };
-
 export const editar_guardar = async (id, data, endpoint) => {
   try {
-    const result = await editar(id, data, endpoint);
+      const result = await editar(id, data, endpoint);
 
-    if (result.error) {
-      console.error('Error al guardar los datos editados:', result.error);
-    } else {
-      console.log('Datos editados y guardados exitosamente:', result);
-    }
+      if (result.error) {
+          console.error('Error al guardar los datos editados:', result.error);
+      } else {
+          console.log('Datos editados y guardados exitosamente:', result);
+      }
 
-    return result;
+      return result;
   } catch (error) {
-    console.error('Error en editar_guardar:', error);
-    return { error: error.message };
+      console.error('Error en editar_guardar:', error);
+      return { error: error.message };
   }
 };
+
 
 export const buscarUsuarios = async (query) => {
   try {
