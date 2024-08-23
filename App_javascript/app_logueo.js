@@ -1,6 +1,6 @@
 import { correo } from "../App_javascript/Modulo/correo.js";
 import { contraseña } from "../App_javascript/Modulo/contraseña.js";
-import { obtenerUsuarios, enviar } from "./Modulo/ajax.js";  // Importamos obtenerUsuarios
+import { obtenerUsuarioPorCredenciales, enviar } from "./Modulo/ajax.js";  
 
 // Obtener referencias a los elementos del DOM
 const loginButton = document.querySelector(".main__formu--button1");
@@ -20,18 +20,11 @@ loginButton.addEventListener("click", async (event) => {
         try {
             console.log("Intentando validar usuario con correo:", correoInput.value);
 
-            // Obtener los datos del registro para validación
-            const usuariosRegistro = await obtenerUsuarios('registros');
-            console.log("Usuarios del registro recibidos:", usuariosRegistro);
-
-            // Validar usuario contra los registros
-            const usuario = usuariosRegistro.find(user => 
-                user.correo === correoInput.value.trim() && 
-                user.contrasena === contraseñaInput.value.trim()
-            );
+            // Validar usuario con correo y contraseña
+            const usuario = await obtenerUsuarioPorCredenciales(correoInput.value, contraseñaInput.value);
 
             if (usuario) {
-                console.log("Usuario encontrado en registros:", usuario);
+                console.log("Usuario encontrado:", usuario);
 
                 // Enviar los datos completos a "users"
                 const response = await enviar({
@@ -40,9 +33,8 @@ loginButton.addEventListener("click", async (event) => {
                     apellido: usuario.apellido,
                     correo: usuario.correo,
                     contrasena: usuario.contrasena
-                }, 'users');  // Enviar al endpoint 'users'
+                }, 'users');  
 
-                // Validar la respuesta del envío a 'users'
                 if (response && response.id) {
                     console.log("Usuario validado y almacenado en users correctamente:", response);
 
@@ -52,14 +44,14 @@ loginButton.addEventListener("click", async (event) => {
                         nombre: response.nombre,
                         apellido: response.apellido,
                         correo: response.correo,
-                        contrasena: response.contrasena // o response.contrasena según el nombre de la propiedad
+                        contrasena: response.contrasena 
                     }));
 
                     // Redirigir según los privilegios del usuario
                     if (response.correo === "stiven11_yp@gmail.com" && response.contrasena === "Stiven11@") {
-                        window.location.href = '/admin/admin.html'; // Redirigir a admin.html
+                        window.location.href = '/admin/admin.html'; 
                     } else {
-                        window.location.href = '/Login/logueo.html'; // Redirigir a logueo.html
+                        window.location.href = '/Login/logueo.html'; 
                     }
                 } else {
                     console.log("Error al guardar los datos en users.");

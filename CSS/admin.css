@@ -4,6 +4,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 :root {
     --color--fondo--header: #015FF4;
     --color--fondo--main: #49BAFF;
@@ -12,20 +13,24 @@
     --color--parrafo--main: #0F4AA9;
     --color--fondo--button: #1F97FF;
     --color--titulo--label: #02508A;
-    --color--borde--button:#005FA7;
+    --color--borde--button: #005FA7;
 }
+
 .header {
     background: var(--color--fondo--header);
     height: 60px;
 }
+
 .header__div {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 .header__div--titulo {
     color: var(--color--titulo);
 }
+
 .header__menu {
     width: 40px;
     height: 40px;
@@ -33,76 +38,89 @@
     justify-content: center;
     align-items: center;
 }
+
 .header__div--img {
     width: 60px;
     height: 60px;
 }
-  /* Dropdown styles */
+
+/* Dropdown styles */
 .dropdown {
     position: relative;
     display: inline-block;
 }
+
 .dropdown-btn {
     background: none;
     border: none;
     cursor: pointer;
     padding: 0;
 }
-.imagen_dropdown{
+
+.imagen_dropdown {
     width: 260px;
     height: 200px;
 }
+
 .dropdown-content {
     display: none;
     position: absolute;
     background-color: #B6DFFF;
     min-width: 250px;
     min-height: 885px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
     border-radius: 20px;
 }
+
 .dropdown-content a {
     color: black;
-    padding: 12px ;
+    padding: 12px;
     text-decoration: none;
     display: block;
     text-align: center;
     margin-top: 10px;
     margin: 10px;
 }
+
 .dropdown-content a:hover {
     background-color: red;
     border-radius: 20px;
     color: #FFFF;
 }
+
 .dropdown:hover .dropdown-content {
     display: block;
 }
-.menu--left{
+
+.menu--left {
     height: calc(100vh - 200px);
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 7px;
 }
-.content{
+
+.content {
     display: block;
     position: relative;
     bottom: 167px;
     text-align: center;
 }
-.content__input{
+
+.content__input {
     border-radius: 50px;
     outline: none;
     border: none;
     width: 40px;
     height: 40px;
 }
-.content__p{
+
+.content__p {
     color: #FFFF;
 }
-  /* Main styles */
+
+/* Main styles */
 .main {
     background: var(--color--fondo--main);
     height: 885px;
@@ -111,26 +129,50 @@
     justify-content: center;
     align-items: center;
 }
+
 .main__section {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-}
-.main__section--input{
     width: 100%;
-    height: 29px;
-    border-radius: 20px;
-    outline: none;
-    border: 1px solid var(--color--input--);
-    margin: 7px;
-    padding: 5px;
+    max-width: 1200px; /* Limitar el ancho máximo */
+    padding: 20px; /* Espaciado interior */
 }
+
+.main__section--article {
+    width: 100%;
+    max-width: 600px; /* Limitar el ancho máximo del artículo */
+    text-align: center;
+}
+
 .main__section--article--titulo {
     color: var(--color--parrafo--main);
-    text-align: center;
     font-size: 40px;
     padding: 10px;
 }
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Espaciado entre los botones */
+    margin-top: 20px;
+}
+
+.main__section--button {
+    background-color: var(--color--fondo--button);
+    color: #FFFF;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.main__section--button:hover {
+    background-color: var(--color--borde--button);
+}
+
 /* Estilos generales para la tabla */
 .main__section--table {
     width: 100%;
@@ -140,28 +182,36 @@
     overflow: hidden; /* Para que los bordes redondeados se apliquen */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra para efecto flotante */
 }
+
 .main__section--table--thead {
     background-color: #f4f4f4;
     color: #333;
     text-align: left;
 }
+
 .main__section--table--thead th {
     padding: 12px 15px;
     border-bottom: 2px solid #ddd;
 }
+
 .main__section--table tbody tr:nth-child(even) {
-    background-color: #f9f9f9; 
+    background-color: #f9f9f9;
 }
+
 .main__section--table tbody tr:nth-child(odd) {
     background-color: #fff;
 }
+
 .main__section--table tbody td {
     padding: 12px 15px;
     border-bottom: 1px solid #ddd;
 }
+
 .main__section--table tbody tr:hover {
-    background-color: #e1e1e1; 
+    background-color: #e1e1e1;
 }
+
+/* Estilos para los botones de estado */
 .status-button {
     border: none;
     padding: 8px 12px;
@@ -172,64 +222,25 @@
     border-radius: 4px;
     transition: background-color 0.3s ease;
 }
+
 .status-button.active {
-    background-color: #4CAF50; 
+    background-color: #4CAF50; /* Verde */
 }
+
 .status-button.inactive {
-    background-color: #f44336; 
+    background-color: #f44336; /* Rojo */
 }
+
 .status-button:hover {
     opacity: 0.8;
 }
-.input__diferent{
+
+.input__diferent {
     width: 200px;
     background-color: var(--color--fondo--button);
     color: #FFFF;
 }
-.input__diferent:hover{
+
+.input__diferent:hover {
     background-color: var(--color--borde--button);
-}/* Estilos generales para los botones */
-.status-button {
-    padding: 8px 12px;
-    margin: 2px;
-    font-size: 14px;
-    border-radius: 4px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-/* Estilos generales para los botones */
-.status-button {
-    padding: 8px 12px;
-    margin: 2px;
-    font-size: 14px;
-    border-radius: 4px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-/* Estilos para el botón de activar */
-.status-button.activate {
-    background-color: #4CAF50; /* Verde */
-    color: white;
-}
-
-.status-button.activate:hover {
-    background-color: #45a049; /* Verde más oscuro */
-}
-
-/* Estilos para el botón de desactivar */
-.status-button.deactivate {
-    background-color: #f44336; /* Rojo */
-    color: white;
-}
-
-.status-button.deactivate:hover {
-    background-color: #da190b; /* Rojo más oscuro */
-}
-
-/* Para que los botones de activar y desactivar no se vean al mismo tiempo */
-.status-button[style*="display: none;"] {
-    display: none;
 }

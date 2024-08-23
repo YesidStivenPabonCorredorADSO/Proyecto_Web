@@ -1,5 +1,33 @@
 import { URL } from "../Modulo/config.js";
 
+// Obtener usuarios desde un endpoint específico
+// Enviar datos a un endpoint específico
+export const enviar = async (data, endpoint) => {
+  try {
+    const url = `${URL}${endpoint}`;
+    console.log("Enviando datos a URL:", url);
+
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const result = await response.json();
+    console.log("Datos enviados con éxito:", result);
+    return result;
+  } catch (error) {
+    console.error("Error al enviar los datos:", error);
+    return { error: error.message };
+  }
+};
+
 export const obtenerUsuarios = async (endpoint) => {
   try {
     const url = `${URL}${endpoint}`;
@@ -25,77 +53,10 @@ export const obtenerUsuarios = async (endpoint) => {
   }
 };
 
-// Enviar datos de inicio de sesión
-export const enviar = async (datos, endpoint) => {
-    try {
-        const response = await fetch(`${URL.replace(/\/$/, "")}/${endpoint}`, {
-            method: 'POST',
-            body: JSON.stringify(datos),
-            headers: {
-                'Content-Type': 'application/json; charset=UTF-8',
-            },
-        });
-
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        console.log('Datos enviados exitosamente:', data);
-        return data;
-    } catch (error) {
-        console.error('Error al enviar los datos:', error);
-        return { error: error.message };
-    }
-}
-
-
-
-
-
-export const editar = async (id, data, endpoint) => {
-  try {
-    const response = await fetch(`${URL.replace(/\/$/, "")}/${endpoint}/${id}`, {
-      method: 'PATCH',
-      body: JSON.stringify(data),
-      headers: {
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const result = await response.json();
-    console.log('Datos actualizados exitosamente:', result);
-    return result;
-  } catch (error) {
-    console.error('Error al actualizar los datos:', error);
-    return { error: error.message };
-  }
-};
-export const editar_guardar = async (id, data, endpoint) => {
-  try {
-      const result = await editar(id, data, endpoint);
-
-      if (result.error) {
-          console.error('Error al guardar los datos editados:', result.error);
-      } else {
-          console.log('Datos editados y guardados exitosamente:', result);
-      }
-
-      return result;
-  } catch (error) {
-      console.error('Error en editar_guardar:', error);
-      return { error: error.message };
-  }
-};
-
-
+// Buscar usuarios por consulta
 export const buscarUsuarios = async (query) => {
   try {
-    const usuarios = await obtenerUsuarios('Users_registro');
+    const usuarios = await obtenerUsuarios('registros');
     const resultados = usuarios.filter(usuario =>
       usuario.id.toString().includes(query) || 
       usuario.nombre.toLowerCase().includes(query.toLowerCase())
@@ -108,6 +69,7 @@ export const buscarUsuarios = async (query) => {
   }
 };
 
+// Actualizar el estado de un usuario
 export const actualizarEstadoUsuario = async (id, activo) => {
   try {
     const response = await fetch(`${URL.replace(/\/$/, "")}/Users_registro/${id}`, {
@@ -130,11 +92,11 @@ export const actualizarEstadoUsuario = async (id, activo) => {
     throw error;
   }
 };
-// ajax.js
 
-export const eliminar = async (id, endpoint) => {
+// Eliminar un usuario
+export const eliminarUsuario = async (id) => {
   try {
-    const response = await fetch(`${URL.replace(/\/$/, "")}/${endpoint}/${id}`, {
+    const response = await fetch(`${URL.replace(/\/$/, "")}/registros/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
@@ -149,6 +111,154 @@ export const eliminar = async (id, endpoint) => {
     return id; // Retorna el ID del usuario eliminado
   } catch (error) {
     console.error('Error al eliminar el usuario:', error);
+    return { error: error.message };
+  }
+};
+
+// Obtener información del usuario por correo y contraseña
+export const obtenerUsuarioPorCredenciales = async (correo, contrasena) => {
+  try {
+    const usuarios = await obtenerUsuarios('registros');
+    const usuario = usuarios.find(user => 
+      user.correo === correo.trim() && 
+      user.contrasena === contrasena.trim()
+    );
+
+    return usuario;
+  } catch (error) {
+    console.error('Error al obtener usuario por credenciales:', error);
+    throw error;
+  }
+};
+
+// ----------------
+
+// Obtener vehículos desde un endpoint específico
+export const obtenerVehiculos = async (endpoint) => {
+  try {
+    const url = `${URL}${endpoint}`;
+    console.log("Fetching URL:", url);
+
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const vehiculos = await response.json();
+    console.log("Vehículos recibidos:", vehiculos);
+    return vehiculos;
+  } catch (error) {
+    console.error("Error al obtener los vehículos:", error);
+    throw error;
+  }
+};
+
+// Buscar vehículos por consulta
+export const buscarVehiculos = async (query) => {
+  try {
+    const vehiculos = await obtenerVehiculos('vehiculos');
+    const resultados = vehiculos.filter(vehiculo =>
+      vehiculo.id.toString().includes(query) || 
+      vehiculo.modelo.toLowerCase().includes(query.toLowerCase())
+    );
+
+    return resultados;
+  } catch (error) {
+    console.error('Error al buscar vehículos:', error);
+    throw error;
+  }
+};
+
+// Eliminar un vehículo
+export const eliminarVehiculo = async (id) => {
+  try {
+    const response = await fetch(`${URL.replace(/\/$/, "")}/vehiculos/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error(`No se pudo eliminar el vehículo. Status: ${response.status}`);
+    }
+
+    console.log('Vehículo eliminado:', id);
+    return id; // Retorna el ID del vehículo eliminado
+  } catch (error) {
+    console.error('Error al eliminar el vehículo:', error);
+    return { error: error.message };
+  }
+};
+
+// --------------------
+
+// Obtener estado del clima desde un endpoint específico
+export const obtenerEstadoClima = async (endpoint) => {
+  try {
+    const url = `${URL}${endpoint}`;
+    console.log("Fetching URL:", url);
+
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const estadoClima = await response.json();
+    console.log("Estado del clima recibido:", estadoClima);
+    return estadoClima;
+  } catch (error) {
+    console.error("Error al obtener el estado del clima:", error);
+    throw error;
+  }
+};
+
+// Buscar estado del clima por consulta
+export const buscarEstadoClima = async (query) => {
+  try {
+    const estadosClima = await obtenerEstadoClima('estado_clima');
+    const resultados = estadosClima.filter(estado =>
+      estado.id.toString().includes(query) || 
+      estado.estado.toLowerCase().includes(query.toLowerCase())
+    );
+
+    return resultados;
+  } catch (error) {
+    console.error('Error al buscar estado del clima:', error);
+    throw error;
+  }
+};
+
+// Eliminar estado del clima
+export const eliminarEstadoClima = async (id) => {
+  try {
+    const response = await fetch(`${URL.replace(/\/$/, "")}/estado_clima/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error(`No se pudo eliminar el estado del clima. Status: ${response.status}`);
+    }
+
+    console.log('Estado del clima eliminado:', id);
+    return id; // Retorna el ID del estado del clima eliminado
+  } catch (error) {
+    console.error('Error al eliminar el estado del clima:', error);
     return { error: error.message };
   }
 };

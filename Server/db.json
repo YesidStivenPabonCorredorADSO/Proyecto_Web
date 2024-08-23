@@ -27,19 +27,23 @@
       "apellido": "Ruiz",
       "correo": "daniel11@gmail.com",
       "contrasena": "Daniel11@"
-    }
-  ],
-  "registros": [
+    },
     {
       "id": "1a14",
       "nombre": "Stiven",
       "apellido": "Pabon",
-      "fecha": "2005-06-11",
-      "genero": "on",
-      "contrasena": "Stiven11@",
       "correo": "stiven11_yp@gmail.com",
-      "activo": true
+      "contrasena": "Stiven11@"
     },
+    {
+      "id": "0c4d",
+      "nombre": "Luna",
+      "apellido": "Alvarez",
+      "correo": "luna_1@gmail.com",
+      "contrasena": "Luna111@"
+    }
+  ],
+  "registros": [
     {
       "id": "f126",
       "nombre": "Sebastian",
@@ -48,6 +52,26 @@
       "genero": "on",
       "contrasena": "Daniel11@",
       "correo": "daniel11@gmail.com",
+      "activo": true
+    },
+    {
+      "id": "09db",
+      "nombre": "Juan",
+      "apellido": "Barrera",
+      "fecha": "2002-10-17",
+      "genero": "on",
+      "contrasena": "Juanberr",
+      "correo": "juanbarr@gmail.com",
+      "activo": true
+    },
+    {
+      "id": "0c4d",
+      "nombre": "Luna",
+      "apellido": "Alvarez",
+      "fecha": "2024-07-03",
+      "genero": "on",
+      "contrasena": "Luna111@",
+      "correo": "luna_1@gmail.com",
       "activo": true
     }
   ],
@@ -299,47 +323,66 @@
   ],
   "vehiculos": [
     {
-      "id": "",
+      "id": "1",
       "vehiculo": "Automovil"
     },
     {
-      "id": "",
+      "id": "2",
       "vehiculo": "Camion"
     },
     {
-      "id": "",
-      "vehiculo": "Motos"
+      "id": "3",
+      "vehiculo": "Moto"
     },
     {
-      "id": "",
+      "id": "4",
       "vehiculo": "Bicliqueta"
-    },
-    {
-      "id": "",
-      "vehiculo": "Camion"
     }
   ],
   "estados_clima": [
     {
-      "id": "",
-      "estados": "Dia soleado"
+      "id": "1",
+      "estados_clima": "Dia soleado"
     },
     {
-      "id": "",
-      "estados": "Día lluvioso"
+      "id": "2",
+      "estados_clima": "Día lluvioso"
     },
     {
-      "id": "",
-      "estados": "Día nubloso"
+      "id": "3",
+      "estados_clima": "Día nubloso"
     },
     {
-      "id": "",
-      "estados": "Día tormenta"
+      "id": "4",
+      "estados_clima": "Día tormenta"
     }
   ],
-  "porcentaje":[
+  "valores_de_accidente_vehiculos": [
     {
-      "valor":""
+      "valor": "20%"
+    },
+    {
+      "valor": "25%"
+    },
+    {
+      "valor": "30"
+    },
+    {
+      "valor": "5%"
+    }
+  ],
+  "valor_de_los_estado_clima": [
+    {
+      "valor": "5%"
+    },
+    {
+      "valor": "15%"
+    },
+    {
+      "valor": "5%"
+    },
+    {
+      "valor": "20%"
     }
   ]
 }
