@@ -27,6 +27,34 @@ export const enviar = async (data, endpoint) => {
     return { error: error.message };
   }
 };
+// Función para editar y guardar la información del usuario
+export const editar_guardar = async (id, data, endpoint) => {
+  try {
+    const url = `${URL.replace(/\/$/, "")}/${endpoint}/${id}`;
+    console.log("Enviando datos a URL:", url);
+
+    const response = await fetch(url, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const result = await response.json();
+    console.log("Datos actualizados con éxito:", result);
+    return result;
+  } catch (error) {
+    console.error("Error al actualizar los datos:", error);
+    return { error: error.message };
+  }
+};
+
+
 
 export const obtenerUsuarios = async (endpoint) => {
   try {
@@ -256,7 +284,7 @@ export const buscarEstadoClima = async (query) => {
 // Eliminar estado del clima
 export const eliminarEstadoClima = async (id) => {
   try {
-    const response = await fetch(`${URL.replace(/\/$/, "")}/estado_clima/${id}`, {
+    const response = await fetch(`${URL.replace(/\/$/, "")}/estados_clima/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'

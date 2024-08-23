@@ -1,6 +1,6 @@
 // app_perfil.js
 
-import { editar_guardar, eliminar } from "../App_javascript/Modulo/ajax.js";
+import { editar_guardar, eliminarUsuario } from "./Modulo/ajax.js";
 
 document.addEventListener('DOMContentLoaded', () => {
     const usuario = JSON.parse(localStorage.getItem('usuario'));
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (apellidoInput) apellidoInput.value = usuario.apellido || '';
         if (correoInput) correoInput.value = usuario.correo || '';
         if (contrasenaInput) contrasenaInput.value = usuario.contrasena || ''; 
-        if (estadoActivoInput) estadoActivoInput.textContent = `Estado Activo: ${usuario.estado_activo ? 'Sí' : 'No'}`;
+        if (estadoActivoInput) estadoActivoInput.textContent = `Estado Activo: ${usuario.activo ? 'Sí' : 'No'}`;
 
         const updateLocalStorage = () => {
             localStorage.setItem('usuario', JSON.stringify(usuario));
@@ -81,7 +81,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         nombre: nombreInput.value,
                         apellido: apellidoInput.value,
                         correo: correoInput.value,
-                        contrasena: contrasenaInput.value
+                        contrasena: contrasenaInput.value,
+                        activo: usuario.activo 
                     };
 
                     const result = await editar_guardar(usuario.id, updatedUserData, 'registros');
@@ -93,6 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         console.log('Datos actualizados en el servidor:', result);
                         alert('Datos actualizados exitosamente.');
 
+                        // Actualizar el almacenamiento local con todos los datos, incluyendo el estado activo
                         localStorage.setItem('usuario', JSON.stringify(updatedUserData));
                         
                         nombreInput.setAttribute('disabled', 'true');
@@ -120,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
             eliminarButton.addEventListener('click', async () => {
                 if (confirm("¿Estás seguro de que deseas eliminar este usuario?")) {
                     try {
-                        const result = await eliminar(usuario.id, 'registros');
+                        const result = await eliminarUsuario(usuario.id, 'registros');
                         
                         if (result.error) {
                             console.error('Error al eliminar el usuario:', result.error);

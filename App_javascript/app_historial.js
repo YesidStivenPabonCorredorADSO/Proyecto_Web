@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Recuperar los datos de la ruta del localStorage
     const datosRuta = JSON.parse(localStorage.getItem('ruta'));
-    const porcentaje = localStorage.getItem('porcentaje'); // Recuperar el porcentaje almacenado
+    const porcentaje = localStorage.getItem('preguntas'); // Recuperar el porcentaje almacenado
 
     if (datosRuta) {
         // Mostrar los datos de la ruta en la página
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (inputDestino) inputDestino.value = datosRuta.destino;
 
         // Opcional: eliminar los datos del localStorage después de usarlos
-        localStorage.removeItem('ruta');
+
     }
 
     // Mostrar el porcentaje calculado

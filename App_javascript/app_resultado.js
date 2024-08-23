@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log("No se encontró información del usuario.");
     }
 
-    const porcentaje = localStorage.getItem('porcentaje');
+    const porcentaje = localStorage.getItem('preguntas');
     console.log("Porcentaje recuperado:", porcentaje);  // Registro del valor recuperado
 
     if (porcentaje) {
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (enviarResultadoBtn) {
         enviarResultadoBtn.addEventListener('click', async () => {
             const data = { porcentaje };
-            const response = await enviar(data, 'Resultado'); 
+            const response = await enviar(data, 'resultados'); 
             if (response.error) {
                 console.error("Error al enviar el porcentaje:", response.error);
             } else {

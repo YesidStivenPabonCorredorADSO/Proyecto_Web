@@ -62,6 +62,55 @@
       "apellido": "John",
       "correo": "john_churro@gmail.com",
       "contrasena": "churroneta"
+    },
+    {
+      "id": "0c4d",
+      "nombre": "Luna",
+      "apellido": "Alvarez",
+      "correo": "luna_1@gmail.com",
+      "contrasena": "Luna111@"
+    },
+    {
+      "id": "09db",
+      "nombre": "Juan",
+      "apellido": "Barrera",
+      "correo": "juanbarr@gmail.com",
+      "contrasena": "Juanberr"
+    },
+    {
+      "id": "69bb",
+      "nombre": "Churro",
+      "apellido": "John",
+      "correo": "john_churro@gmail.com",
+      "contrasena": "churroneta"
+    },
+    {
+      "id": "1295",
+      "nombre": "Juan",
+      "apellido": "Olave",
+      "correo": "juanolave@gmail.com",
+      "contrasena": "olave11@"
+    },
+    {
+      "id": "1295",
+      "nombre": "Juan",
+      "apellido": "Olave",
+      "correo": "juanolave@gmail.com",
+      "contrasena": "olave11@"
+    },
+    {
+      "id": "1295",
+      "nombre": "Juan",
+      "apellido": "Olave",
+      "correo": "juanolave@gmail.com",
+      "contrasena": "olave11@"
+    },
+    {
+      "id": "1295",
+      "nombre": "Juan",
+      "apellido": "Olave",
+      "correo": "juanolave@gmail.com",
+      "contrasena": "olave11@"
     }
   ],
   "registros": [
@@ -86,23 +135,23 @@
       "activo": true
     },
     {
-      "id": "0c4d",
-      "nombre": "Luna",
-      "apellido": "Alvarez",
-      "fecha": "2024-07-03",
+      "id": "8746",
+      "nombre": "Yesid",
+      "apellido": "Pabon",
+      "fecha": "2005-06-11",
       "genero": "on",
-      "contrasena": "Luna111@",
-      "correo": "luna_1@gmail.com",
+      "contrasena": "Stiven11@",
+      "correo": "stiven11_yp@gmail.com",
       "activo": true
     },
     {
-      "id": "69bb",
-      "nombre": "Churro",
-      "apellido": "John",
-      "fecha": "2007-06-13",
+      "id": "1295",
+      "nombre": "Fernando",
+      "apellido": "Gomez",
+      "fecha": "2015-06-18",
       "genero": "on",
-      "contrasena": "churroneta",
-      "correo": "john_churro@gmail.com",
+      "contrasena": "olave11@",
+      "correo": "juanolave@gmail.com",
       "activo": true
     }
   ],
@@ -165,6 +214,108 @@
       "vehiculo": "Cicla",
       "ambiente": "Día tormenta",
       "porcentaje": 35
+    },
+    {
+      "id": "b83a",
+      "vehiculo": "Bicliqueta",
+      "ambiente": "Día tormenta",
+      "porcentaje": 22
+    },
+    {
+      "id": "24e2",
+      "vehiculo": "San Juan",
+      "ambiente": "Dia Soleado",
+      "porcentaje": 19
+    },
+    {
+      "id": "553d",
+      "vehiculo": "Bicliqueta",
+      "ambiente": "Día tormenta",
+      "porcentaje": 22
+    },
+    {
+      "id": "a103",
+      "vehiculo": "Bicliqueta",
+      "ambiente": "Dia Soleado",
+      "porcentaje": 21
+    },
+    {
+      "id": "d797",
+      "vehiculo": "Bicliqueta",
+      "ambiente": "Día tormenta",
+      "porcentaje": 22
+    },
+    {
+      "id": "276a",
+      "vehiculo": "Flotax",
+      "ambiente": "Dia Soleado",
+      "porcentaje": 17
+    },
+    {
+      "id": "bbdf",
+      "vehiculo": "Bicliqueta",
+      "ambiente": "Día tormenta",
+      "porcentaje": null
+    },
+    {
+      "id": "a492",
+      "vehiculo": "kia",
+      "ambiente": "Día tormenta",
+      "porcentaje": null
+    },
+    {
+      "id": "39fa",
+      "vehiculo": "San Juan",
+      "ambiente": "Día tormenta",
+      "porcentaje": null
+    },
+    {
+      "id": "c0b7",
+      "vehiculo": "Flotax",
+      "ambiente": "Día tormenta",
+      "porcentaje": null
+    },
+    {
+      "id": "3f3a",
+      "vehiculo": "Bicliqueta",
+      "ambiente": "Dia Soleado",
+      "porcentaje": null
+    },
+    {
+      "id": "7168",
+      "vehiculo": "vocero",
+      "ambiente": "Día tormenta",
+      "porcentaje": null
+    },
+    {
+      "id": "3bb4",
+      "vehiculo": "Bicliqueta",
+      "ambiente": "Día tormenta",
+      "porcentaje": null
+    },
+    {
+      "id": "0c19",
+      "vehiculo": "25",
+      "ambiente": "5",
+      "porcentaje": 2.55
+    },
+    {
+      "id": "9c50",
+      "vehiculo": "5",
+      "ambiente": "5",
+      "porcentaje": 0.55
+    },
+    {
+      "id": "3433",
+      "vehiculo": "5",
+      "ambiente": "5",
+      "porcentaje": 0.55
+    },
+    {
+      "id": "6a64",
+      "vehiculo": "20",
+      "ambiente": "5",
+      "porcentaje": 2.05
     }
   ],
   "ubicaciones": [
@@ -328,6 +479,162 @@
         7.16698415,
         -73.1047294009737
       ]
+    },
+    {
+      "id": "1751",
+      "origen": "7.16698415, -73.1047294009737",
+      "destino": "7.0732333, -73.1689196",
+      "coordenadas_origen": [
+        7.16698415,
+        -73.1047294009737
+      ],
+      "coordenadas_destino": [
+        7.0732333,
+        -73.1689196
+      ]
+    },
+    {
+      "id": "eed1",
+      "origen": "7.0732333, -73.1689196",
+      "destino": "2.4422295, -76.6072368",
+      "coordenadas_origen": [
+        7.0732333,
+        -73.1689196
+      ],
+      "coordenadas_destino": [
+        2.4422295,
+        -76.6072368
+      ]
+    },
+    {
+      "id": "72d2",
+      "origen": "7.16698415, -73.1047294009737",
+      "destino": "7.0732333, -73.1689196",
+      "coordenadas_origen": [
+        7.16698415,
+        -73.1047294009737
+      ],
+      "coordenadas_destino": [
+        7.0732333,
+        -73.1689196
+      ]
+    },
+    {
+      "id": "2978",
+      "origen": "7.0732333, -73.1689196",
+      "destino": "7.16698415, -73.1047294009737",
+      "coordenadas_origen": [
+        7.0732333,
+        -73.1689196
+      ],
+      "coordenadas_destino": [
+        7.16698415,
+        -73.1047294009737
+      ]
+    },
+    {
+      "id": "f3c1",
+      "origen": "7.1255169, -73.1182624",
+      "destino": "7.0732333, -73.1689196",
+      "coordenadas_origen": [
+        7.1255169,
+        -73.1182624
+      ],
+      "coordenadas_destino": [
+        7.0732333,
+        -73.1689196
+      ]
+    },
+    {
+      "id": "b0de",
+      "origen": "7.1255169, -73.1182624",
+      "destino": "7.0732333, -73.1689196",
+      "coordenadas_origen": [
+        7.1255169,
+        -73.1182624
+      ],
+      "coordenadas_destino": [
+        7.0732333,
+        -73.1689196
+      ]
+    },
+    {
+      "id": "7838",
+      "origen": "7.1255169, -73.1182624",
+      "destino": "7.0732333, -73.1689196",
+      "coordenadas_origen": [
+        7.1255169,
+        -73.1182624
+      ],
+      "coordenadas_destino": [
+        7.0732333,
+        -73.1689196
+      ]
+    },
+    {
+      "id": "3df0",
+      "origen": "46.2248289, 5.7729124",
+      "destino": "7.16698415, -73.1047294009737",
+      "coordenadas_origen": [
+        46.2248289,
+        5.7729124
+      ],
+      "coordenadas_destino": [
+        7.16698415,
+        -73.1047294009737
+      ]
+    },
+    {
+      "id": "0c3b",
+      "origen": "7.0732333, -73.1689196",
+      "destino": "7.1255169, -73.1182624",
+      "coordenadas_origen": [
+        7.0732333,
+        -73.1689196
+      ],
+      "coordenadas_destino": [
+        7.1255169,
+        -73.1182624
+      ]
+    },
+    {
+      "id": "b0cc",
+      "origen": "7.1255169, -73.1182624",
+      "destino": "7.0732333, -73.1689196",
+      "coordenadas_origen": [
+        7.1255169,
+        -73.1182624
+      ],
+      "coordenadas_destino": [
+        7.0732333,
+        -73.1689196
+      ]
+    },
+    {
+      "id": "0717",
+      "origen": "7.16698415, -73.1047294009737",
+      "destino": "7.0732333, -73.1689196",
+      "coordenadas_origen": [
+        7.16698415,
+        -73.1047294009737
+      ],
+      "coordenadas_destino": [
+        7.0732333,
+        -73.1689196
+      ]
+    },
+    {
+      "id": "f01b",
+      "origen": "7.16698415, -73.1047294009737",
+      "destino": "7.0732333, -73.1689196",
+      "coordenadas_origen": [
+        7.16698415,
+        -73.1047294009737
+      ],
+      "coordenadas_destino": [
+        7.0732333,
+        -73.1689196
+      ]
     }
   ],
   "resultados": [
@@ -350,82 +657,57 @@
     {
       "id": "a866",
       "porcentaje": "35"
+    },
+    {
+      "id": "34e6",
+      "porcentaje": "2.55"
+    },
+    {
+      "id": "7bad",
+      "porcentaje": "0.55"
+    },
+    {
+      "id": "ccda",
+      "porcentaje": "2.05"
     }
   ],
   "vehiculos": [
     {
-      "vehiculo": "Automovil",
-      "id": "1"
-    },
-    {
-      "id": "2",
-      "vehiculo": "Camion"
-    },
-    {
-      "id": "3",
-      "vehiculo": "Moto"
-    },
-    {
+      "vehiculo": "Bicliqueta",
       "id": "4",
-      "vehiculo": "Bicliqueta"
+      "valor": "20"
     },
     {
-      "id": "2576",
-      "vehiculo": "Morro"
+      "id": "40e0",
+      "vehiculo": "kia",
+      "valor": "25"
+    },
+    {
+      "id": "bf6e",
+      "vehiculo": "San Juan",
+      "valor": "5"
+    },
+    {
+      "vehiculo": "Flotax",
+      "id": "26be",
+      "valor": "5"
+    },
+    {
+      "id": "7f58",
+      "vehiculo": "vocero",
+      "valor": "2"
     }
   ],
   "estados_clima": [
     {
-      "id": "1",
-      "estados_clima": "Dia soleado"
-    },
-    {
-      "id": "2",
-      "estados_clima": "Día lluvioso"
-    },
-    {
-      "id": "3",
-      "estados_clima": "Día nubloso"
-    },
-    {
       "id": "4",
-      "estados_clima": "Día tormenta"
-    }
-  ],
-  "valores_de_accidente_vehiculos": [
-    {
-      "valor": "20%",
-      "id": "2f88"
+      "estados_clima": "Día tormenta",
+      "valor": "5"
     },
     {
-      "valor": "25%",
-      "id": "22f8"
-    },
-    {
-      "valor": "30",
-      "id": "c65a"
-    },
-    {
-      "valor": "5%",
-      "id": "0f8b"
-    }
-  ],
-  "valor_de_los_estado_clima": [
-    {
-      "valor": "5%",
-      "id": "6b7a"
-    },
-    {
-      "valor": "15%",
-      "id": "649d"
-    },
-    {
-      "valor": "5%",
-      "id": "16c0"
-    },
-    {
-      "valor": "20%",
-      "id": "e8a3"
+      "id": "8208",
+      "estados_clima": "Dia Soleado",
+      "valor": "5"
     }
   ]
 }

@@ -149,6 +149,7 @@ const mostrarFormularioAgregarVehiculo = () => {
         <form id="add-vehicle-form">
             <label for="vehicle-name">Nombre del Vehículo:</label>
             <input type="text" id="vehicle-name" name="vehicle-name" required>
+            <input type="text" id="vehicle-porcentaje" name="vehicle-name" required>
             <button type="button" id="cancel-add-vehicle">Cancelar</button>
             <button type="submit" id="submit-add-vehicle">Agregar</button>
         </form>
@@ -161,6 +162,7 @@ const mostrarFormularioAgregarVehiculo = () => {
     document.getElementById('add-vehicle-form').addEventListener('submit', async (event) => {
         event.preventDefault();
         const vehicleName = document.getElementById('vehicle-name').value.trim();
+        const vehiculo_valor=document.getElementById('vehicle-porcentaje').value.trim()
 
         if (vehicleName) {
             try {
@@ -169,7 +171,7 @@ const mostrarFormularioAgregarVehiculo = () => {
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ vehiculo: vehicleName }),
+                    body: JSON.stringify({ vehiculo: vehicleName,valor: vehiculo_valor }),
                 });
 
                 if (!response.ok) {
@@ -203,6 +205,7 @@ const mostrarFormularioEditarVehiculo = async (id) => {
             <form id="edit-vehicle-form">
                 <label for="edit-vehicle-name">Nombre del Vehículo:</label>
                 <input type="text" id="edit-vehicle-name" name="vehicle-name" value="${vehiculo.vehiculo}" required>
+                <input type="text" id="edit-vehicle-name" name="vehicle-name" value="${vehiculo.valor}" required>
                 <button type="button" id="cancel-edit-vehicle">Cancelar</button>
                 <button type="submit" id="submit-edit-vehicle">Guardar Cambios</button>
             </form>
@@ -260,7 +263,9 @@ const mostrarSeccionVehiculos = async () => {
                 <tr class="main__section--table--thead--row">
                     <th class="main__section--table--thead--cell">ID</th>
                     <th class="main__section--table--thead--cell">Nombre</th>
+                    <th class="main__section--table--thead--cell">Porcentaje</th>
                     <th class="main__section--table--thead--cell">Acción</th>
+                    
                 </tr>
             </thead>
             <tbody class="main__section--table--tbody">
@@ -291,7 +296,7 @@ const mostrarSeccionVehiculos = async () => {
     });
 
     // Evento para agregar vehículo (fuera del formulario)
-    document.getElementById('add-vehiculo').addEventListener('click', mostrarFormularioAgregarVehiculo);
+    // document.getElementById('add-vehiculo').addEventListener('click', mostrarFormularioAgregarVehiculo);
 };
 
 // Función para mostrar vehículos en la tabla
@@ -304,6 +309,7 @@ const mostrarVehiculos = (vehiculos) => {
         row.innerHTML = `
             <td>${vehiculo.id}</td>
             <td>${vehiculo.vehiculo}</td>
+            <td>${vehiculo.valor}%</td>
             <td>
                 <button class="status-button edit" data-id="${vehiculo.id}">Editar</button>
                 <button class="status-button delete" data-id="${vehiculo.id}">Eliminar</button>
@@ -318,10 +324,22 @@ const mostrarVehiculos = (vehiculos) => {
     addButtons.forEach(button => {
         button.addEventListener('click', (event) => {
             const vehiculoId = event.target.getAttribute('data-id');
+            
             mostrarFormularioAgregarVehiculo();
             console.log(`Agregar vehículo con ID: ${vehiculoId}`);
         });
     });
+
+        // Asignar funcionalidad al botón "Agregar Vehículo"
+        const deleteButtons = document.querySelectorAll('.status-button.delete');
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                const vehiculoId = event.target.getAttribute('data-id');
+                eliminarVehiculo(vehiculoId);
+                mostrarSeccionVehiculos();
+                console.log(`Agregar vehículo con ID: ${vehiculoId}`);
+            });
+        });
 
     // Asignar funcionalidad al botón "Editar"
     const editButtons = document.querySelectorAll('.status-button.edit');
@@ -341,7 +359,8 @@ const mostrarFormularioAgregarEstadoClimatico = () => {
         <h2 class="main__section--article--titulo">Agregar Nuevo Estado Climático</h2>
         <form id="add-clima-form">
             <label for="estado-climatico">Nombre del Estado Climático:</label>
-            <input type="text" id="estado-climatico" name="estado-climatico" required>
+            <input type="text" id="estado-climatico" name="estado-climatico" value="" required>
+            <input type="text" id="estado-climatico-valor" name="estado-climatico" value="" required>
             <button type="button" id="cancel-add-clima">Cancelar</button>
             <button type="submit" id="submit-add-clima">Agregar</button>
         </form>
@@ -352,7 +371,9 @@ const mostrarFormularioAgregarEstadoClimatico = () => {
     document.getElementById('add-clima-form').addEventListener('submit', async (event) => {
         event.preventDefault();
         const estadoClimatico = document.getElementById('estado-climatico').value.trim();
-
+        const estado_valor = document.getElementById('estado-climatico-valor').value.trim();
+        const valor = estado_valor
+        const estados_clima=estadoClimatico
         if (estadoClimatico) {
             try {
                 const response = await fetch('http://localhost:3000/estados_clima', {
@@ -360,7 +381,7 @@ const mostrarFormularioAgregarEstadoClimatico = () => {
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ estado_climatico }),
+                    body: JSON.stringify({ estados_clima, valor }),
                 });
 
                 if (!response.ok) {
@@ -393,26 +414,30 @@ const mostrarFormularioEditarEstadoClimatico = async (id) => {
             <h2 class="main__section--article--titulo">Editar Estado Climático</h2>
             <form id="edit-clima-form">
                 <label for="edit-estado-climatico">Nombre del Estado Climático:</label>
-                <input type="text" id="edit-estado-climatico" name="estado-climatico" value="${estadoClimatico.estado_climatico}" required>
+                <input type="text" id="edit-estado-climatico" name="estado-climatico" value="${estadoClimatico.estados_clima}" required>
+                <input type="text" id="edit-estado-climatico-valor" name="estado-valor" value="${estadoClimatico.valor}" required>
                 <button type="button" id="cancel-edit-clima">Cancelar</button>
                 <button type="submit" id="submit-edit-clima">Guardar Cambios</button>
             </form>
         `;
-
+        console.log(estadoClimatico.estados_clima)
         // Asignar eventos a los botones del formulario
         document.getElementById('cancel-edit-clima').addEventListener('click', mostrarSeccionClima);
         document.getElementById('edit-clima-form').addEventListener('submit', async (event) => {
             event.preventDefault();
             const estadoClimatico = document.getElementById('edit-estado-climatico').value.trim();
-
-            if (estadoClimatico) {
+            const estados_clima=estadoClimatico 
+            const estado_Valor=document.getElementById('edit-estado-climatico-valor').value.trim();
+            const valor = estado_Valor
+            console.log(estadoClimatico)
+            if (estadoClimatico && estado_Valor) {
                 try {
                     const response = await fetch(`http://localhost:3000/estados_clima/${id}`, {
-                        method: 'PUT',
+                        method: 'PATCH',
                         headers: {
                             'Content-Type': 'application/json',
                         },
-                        body: JSON.stringify({ estado_climatico }),
+                        body: JSON.stringify({ estados_clima, valor}),
                     });
 
                     if (!response.ok) {
@@ -449,11 +474,12 @@ const mostrarSeccionClima = async () => {
                 <tr class="main__section--table--thead--row">
                     <th class="main__section--table--thead--cell">ID</th>
                     <th class="main__section--table--thead--cell">Estado</th>
+                    <th class="main__section--table--thead--cell">Porcentaje</th>
                     <th class="main__section--table--thead--cell">Acción</th>
                 </tr>
             </thead>
             <tbody class="main__section--table--tbody">
-                <!-- Las filas de datos se agregarán aquí dinámicamente -->
+            
             </tbody>
         </table>
     `;
@@ -479,7 +505,7 @@ const mostrarSeccionClima = async () => {
         }
     });
 
-    document.getElementById('add-clima').addEventListener('click', mostrarFormularioAgregarEstadoClimatico);
+    // document.getElementById('add-clima').addEventListener('click', mostrarFormularioAgregarEstadoClimatico);
 };
 
 // Función para mostrar estados climáticos en la tabla
@@ -491,7 +517,8 @@ const mostrarEstadosClima = (estadosClima) => {
         const row = document.createElement('tr');
         row.innerHTML = `
             <td>${estado.id}</td>
-            <td>${estado.estado_climatico}</td>
+            <td>${estado.estados_clima}</td>
+            <td>${estado.valor}%</td>
             <td>
                 <button class="status-button edit" data-id="${estado.id}">Editar</button>
                 <button class="status-button delete" data-id="${estado.id}">Eliminar</button>
@@ -533,7 +560,7 @@ const asignarEventosEstadoClimatico = () => {
     document.querySelectorAll('.status-button.add').forEach(button => {
         button.addEventListener('click', (event) => {
             const estadoId = event.target.getAttribute('data-id');
-            mostrarFormularioAgregarEstadoClimatico(); // Aquí podrías manejar si el estado es un nuevo estado o ya existe
+            mostrarFormularioAgregarEstadoClimatico(estadoId ); // Aquí podrías manejar si el estado es un nuevo estado o ya existe
         });
     });
 };
