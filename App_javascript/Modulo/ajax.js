@@ -72,7 +72,7 @@ export const buscarUsuarios = async (query) => {
 // Actualizar el estado de un usuario
 export const actualizarEstadoUsuario = async (id, activo) => {
   try {
-    const response = await fetch(`${URL.replace(/\/$/, "")}/Users_registro/${id}`, {
+    const response = await fetch(`${URL.replace(/\/$/, "")}/registros/${id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'
@@ -163,9 +163,11 @@ export const obtenerVehiculos = async (endpoint) => {
 export const buscarVehiculos = async (query) => {
   try {
     const vehiculos = await obtenerVehiculos('vehiculos');
+    console.log('Vehículos obtenidos:', vehiculos); // Puedes quitar esto después de verificar
+
     const resultados = vehiculos.filter(vehiculo =>
       vehiculo.id.toString().includes(query) || 
-      vehiculo.modelo.toLowerCase().includes(query.toLowerCase())
+      vehiculo.vehiculo.toLowerCase().includes(query.toLowerCase()) // Aquí se cambia `modelo` por `vehiculo`
     );
 
     return resultados;
@@ -174,6 +176,7 @@ export const buscarVehiculos = async (query) => {
     throw error;
   }
 };
+
 
 // Eliminar un vehículo
 export const eliminarVehiculo = async (id) => {
@@ -202,7 +205,7 @@ export const eliminarVehiculo = async (id) => {
 // Obtener estado del clima desde un endpoint específico
 export const obtenerEstadoClima = async (endpoint) => {
   try {
-    const url = `${URL}${endpoint}`;
+    const url = `${URL}${endpoint}`; // Verifica que URL esté definido y correcto
     console.log("Fetching URL:", url);
 
     const response = await fetch(url, {
@@ -225,13 +228,20 @@ export const obtenerEstadoClima = async (endpoint) => {
   }
 };
 
+
+
+
 // Buscar estado del clima por consulta
 export const buscarEstadoClima = async (query) => {
   try {
-    const estadosClima = await obtenerEstadoClima('estado_clima');
+    // Obtener los estados del clima desde el endpoint
+    const estadosClima = await obtenerEstadoClima('estados_clima');
+    console.log('Estados climáticos obtenidos:', estadosClima); // Puedes quitar esto después de verificar
+
+    // Filtrar los resultados basados en la consulta
     const resultados = estadosClima.filter(estado =>
       estado.id.toString().includes(query) || 
-      estado.estado.toLowerCase().includes(query.toLowerCase())
+      estado.estados_clima.toLowerCase().includes(query.toLowerCase()) // Cambia `estado` por `estados_clima`
     );
 
     return resultados;
@@ -240,6 +250,8 @@ export const buscarEstadoClima = async (query) => {
     throw error;
   }
 };
+
+
 
 // Eliminar estado del clima
 export const eliminarEstadoClima = async (id) => {

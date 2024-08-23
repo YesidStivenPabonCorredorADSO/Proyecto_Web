@@ -41,6 +41,27 @@
       "apellido": "Alvarez",
       "correo": "luna_1@gmail.com",
       "contrasena": "Luna111@"
+    },
+    {
+      "id": "f126",
+      "nombre": "Sebastian",
+      "apellido": "Ruiz",
+      "correo": "daniel11@gmail.com",
+      "contrasena": "Daniel11@"
+    },
+    {
+      "id": "f126",
+      "nombre": "Sebastian",
+      "apellido": "Ruiz",
+      "correo": "daniel11@gmail.com",
+      "contrasena": "Daniel11@"
+    },
+    {
+      "id": "69bb",
+      "nombre": "Churro",
+      "apellido": "John",
+      "correo": "john_churro@gmail.com",
+      "contrasena": "churroneta"
     }
   ],
   "registros": [
@@ -72,6 +93,16 @@
       "genero": "on",
       "contrasena": "Luna111@",
       "correo": "luna_1@gmail.com",
+      "activo": true
+    },
+    {
+      "id": "69bb",
+      "nombre": "Churro",
+      "apellido": "John",
+      "fecha": "2007-06-13",
+      "genero": "on",
+      "contrasena": "churroneta",
+      "correo": "john_churro@gmail.com",
       "activo": true
     }
   ],
@@ -323,8 +354,8 @@
   ],
   "vehiculos": [
     {
-      "id": "1",
-      "vehiculo": "Automovil"
+      "vehiculo": "Automovil",
+      "id": "1"
     },
     {
       "id": "2",
@@ -337,6 +368,10 @@
     {
       "id": "4",
       "vehiculo": "Bicliqueta"
+    },
+    {
+      "id": "2576",
+      "vehiculo": "Morro"
     }
   ],
   "estados_clima": [
@@ -359,30 +394,38 @@
   ],
   "valores_de_accidente_vehiculos": [
     {
-      "valor": "20%"
+      "valor": "20%",
+      "id": "2f88"
     },
     {
-      "valor": "25%"
+      "valor": "25%",
+      "id": "22f8"
     },
     {
-      "valor": "30"
+      "valor": "30",
+      "id": "c65a"
     },
     {
-      "valor": "5%"
+      "valor": "5%",
+      "id": "0f8b"
     }
   ],
   "valor_de_los_estado_clima": [
     {
-      "valor": "5%"
+      "valor": "5%",
+      "id": "6b7a"
     },
     {
-      "valor": "15%"
+      "valor": "15%",
+      "id": "649d"
     },
     {
-      "valor": "5%"
+      "valor": "5%",
+      "id": "16c0"
     },
     {
-      "valor": "20%"
+      "valor": "20%",
+      "id": "e8a3"
     }
   ]
 }

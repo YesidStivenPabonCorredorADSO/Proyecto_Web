@@ -244,3 +244,88 @@
 .input__diferent:hover {
     background-color: var(--color--borde--button);
 }
+/* Estilos para los botones de estado */
+.status-button {
+    border: none;
+    padding: 8px 12px;
+    margin: 2px;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.status-button.activate {
+    background-color: #4CAF50; /* Verde para Activar */
+    border: 2px solid var(--color--borde--button);
+}
+
+.status-button.deactivate {
+    background-color: #f44336; /* Rojo para Desactivar */
+    border: 2px solid var(--color--borde--button);
+}
+
+.status-button:hover {
+    opacity: 0.8;
+}
+
+.status-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+/* Estilos para los botones "Editar" y "Eliminar" */
+.status-button.edit {
+    background-color: #1F97FF; /* Azul */
+    border: 2px solid var(--color--borde--button);
+}
+
+.status-button.delete {
+    background-color: #f44336; /* Rojo */
+    border: 2px solid var(--color--borde--button);
+}
+
+.status-button:hover {
+    opacity: 0.8;
+}
+/* Estilo base para los botones */
+.status-button {
+    background-color: #007bff; /* Color de fondo del botón */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 4px; /* Bordes redondeados */
+    padding: 10px 15px; /* Espaciado interno */
+    font-size: 14px; /* Tamaño de fuente */
+    cursor: pointer; /* Cursor de mano al pasar sobre el botón */
+    transition: background-color 0.3s; /* Transición suave para el cambio de color */
+}
+
+/* Estilo para el botón "Agregar" */
+.status-button.add {
+    background-color: #28a745; /* Color verde para el botón de agregar */
+}
+
+/* Estilo para el botón "Agregar" al pasar el cursor */
+.status-button.add:hover {
+    background-color: #218838; /* Color verde oscuro para el botón de agregar al pasar el cursor */
+}
+
+/* Estilo para el botón "Editar" */
+.status-button.edit {
+    background-color: #ffc107; /* Color amarillo para el botón de editar */
+}
+
+/* Estilo para el botón "Editar" al pasar el cursor */
+.status-button.edit:hover {
+    background-color: #e0a800; /* Color amarillo oscuro para el botón de editar al pasar el cursor */
+}
+
+/* Estilo para el botón "Eliminar" */
+.status-button.delete {
+    background-color: #dc3545; /* Color rojo para el botón de eliminar */
+}
+
+/* Estilo para el botón "Eliminar" al pasar el cursor */
+.status-button.delete:hover {
+    background-color: #c82333; /* Color rojo oscuro para el botón de eliminar al pasar el cursor */
+}

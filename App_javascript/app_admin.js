@@ -1,6 +1,6 @@
-import { obtenerUsuarios, buscarUsuarios, actualizarEstadoUsuario, eliminarUsuario, obtenerUsuarioPorCredenciales } from "../App_javascript/Modulo/usuarios.js";
-import { obtenerVehiculos, buscarVehiculos, eliminarVehiculo } from "../App_javascript/Modulo/vehiculos.js";
-import { obtenerEstadoClima, buscarEstadoClima, eliminarEstadoClima } from "../App_javascript/Modulo/estadoClima.js";
+import { obtenerUsuarios, buscarUsuarios, actualizarEstadoUsuario, eliminarUsuario, obtenerUsuarioPorCredenciales } from "./Modulo/ajax.js";
+import { obtenerVehiculos, buscarVehiculos, eliminarVehiculo } from "./Modulo/ajax.js";
+import { obtenerEstadoClima, buscarEstadoClima, eliminarEstadoClima } from "./Modulo/ajax.js";
 
 
 // Mostrar los datos del usuario actual al cargar la página
@@ -90,7 +90,6 @@ const mostrarUsuarios = (usuarios) => {
             <td>
                 <button class="status-button activate" data-id="${usuario.id}" ${usuario.activo ? 'disabled' : ''}>Activar</button>
                 <button class="status-button deactivate" data-id="${usuario.id}" ${!usuario.activo ? 'disabled' : ''}>Desactivar</button>
-                <button class="status-button delete" data-id="${usuario.id}">Eliminar</button>
             </td>
         `;
         tableBody.appendChild(row);
@@ -142,6 +141,110 @@ const mostrarUsuarios = (usuarios) => {
         });
     });
 };
+// Función para mostrar el formulario de agregar vehículo
+const mostrarFormularioAgregarVehiculo = () => {
+    const contentContainer = document.getElementById('content-container');
+    contentContainer.innerHTML = `
+        <h2 class="main__section--article--titulo">Agregar Nuevo Vehículo</h2>
+        <form id="add-vehicle-form">
+            <label for="vehicle-name">Nombre del Vehículo:</label>
+            <input type="text" id="vehicle-name" name="vehicle-name" required>
+            <button type="button" id="cancel-add-vehicle">Cancelar</button>
+            <button type="submit" id="submit-add-vehicle">Agregar</button>
+        </form>
+    `;
+
+    // Evento para cancelar el formulario
+    document.getElementById('cancel-add-vehicle').addEventListener('click', mostrarSeccionVehiculos);
+
+    // Evento para enviar el formulario
+    document.getElementById('add-vehicle-form').addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const vehicleName = document.getElementById('vehicle-name').value.trim();
+
+        if (vehicleName) {
+            try {
+                const response = await fetch('http://localhost:3000/vehiculos', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ vehiculo: vehicleName }),
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                alert('Vehículo agregado con éxito');
+                mostrarSeccionVehiculos(); // Regresa a la lista de vehículos
+            } catch (error) {
+                console.error('Error al agregar vehículo:', error);
+                alert('Hubo un problema al agregar el vehículo. Inténtalo de nuevo más tarde.');
+            }
+        } else {
+            alert('Por favor, ingresa un nombre para el vehículo.');
+        }
+    });
+};
+
+// Función para mostrar el formulario de edición de vehículo
+const mostrarFormularioEditarVehiculo = async (id) => {
+    const contentContainer = document.getElementById('content-container');
+    try {
+        const response = await fetch(`http://localhost:3000/vehiculos/${id}`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const vehiculo = await response.json();
+
+        contentContainer.innerHTML = `
+            <h2 class="main__section--article--titulo">Editar Vehículo</h2>
+            <form id="edit-vehicle-form">
+                <label for="edit-vehicle-name">Nombre del Vehículo:</label>
+                <input type="text" id="edit-vehicle-name" name="vehicle-name" value="${vehiculo.vehiculo}" required>
+                <button type="button" id="cancel-edit-vehicle">Cancelar</button>
+                <button type="submit" id="submit-edit-vehicle">Guardar Cambios</button>
+            </form>
+        `;
+
+        // Evento para cancelar la edición
+        document.getElementById('cancel-edit-vehicle').addEventListener('click', mostrarSeccionVehiculos);
+
+        // Evento para enviar el formulario de edición
+        document.getElementById('edit-vehicle-form').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const vehicleName = document.getElementById('edit-vehicle-name').value.trim();
+
+            if (vehicleName) {
+                try {
+                    const response = await fetch(`http://localhost:3000/vehiculos/${id}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ vehiculo: vehicleName }),
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    alert('Vehículo actualizado con éxito');
+                    mostrarSeccionVehiculos(); // Regresa a la lista de vehículos
+                } catch (error) {
+                    console.error('Error al actualizar vehículo:', error);
+                    alert('Hubo un problema al actualizar el vehículo. Inténtalo de nuevo más tarde.');
+                }
+            } else {
+                alert('Por favor, ingresa un nombre para el vehículo.');
+            }
+        });
+    } catch (error) {
+        console.error('Error al cargar los datos del vehículo:', error);
+        alert('Hubo un problema al cargar los datos del vehículo. Inténtalo de nuevo más tarde.');
+    }
+};
 
 // Función para mostrar la sección de Vehículos
 const mostrarSeccionVehiculos = async () => {
@@ -164,9 +267,8 @@ const mostrarSeccionVehiculos = async () => {
                 <!-- Las filas de datos se agregarán aquí dinámicamente -->
             </tbody>
         </table>
-        <button id="add-vehiculo" class="main__section--input input__diferent">Agregar Vehículo</button>
     `;
-    
+
     let vehiculos = [];
     try {
         vehiculos = await obtenerVehiculos('vehiculos');
@@ -188,10 +290,8 @@ const mostrarSeccionVehiculos = async () => {
         }
     });
 
-    // Evento para agregar vehículo
-    document.getElementById('add-vehiculo').addEventListener('click', () => {
-        window.location.href = '/agregar-vehiculo.html';
-    });
+    // Evento para agregar vehículo (fuera del formulario)
+    document.getElementById('add-vehiculo').addEventListener('click', mostrarFormularioAgregarVehiculo);
 };
 
 // Función para mostrar vehículos en la tabla
@@ -203,32 +303,139 @@ const mostrarVehiculos = (vehiculos) => {
         const row = document.createElement('tr');
         row.innerHTML = `
             <td>${vehiculo.id}</td>
-            <td>${vehiculo.nombre}</td>
+            <td>${vehiculo.vehiculo}</td>
             <td>
+                <button class="status-button edit" data-id="${vehiculo.id}">Editar</button>
                 <button class="status-button delete" data-id="${vehiculo.id}">Eliminar</button>
+                <button class="status-button add" data-id="${vehiculo.id}">Agregar Vehículo</button>
             </td>
         `;
         tableBody.appendChild(row);
     });
 
-    // Añadir eventos de click a los botones
-    document.querySelectorAll('.delete').forEach(button => {
-        button.addEventListener('click', async (event) => {
-            const id = event.target.dataset.id;
-            try {
-                await eliminarVehiculo(id);
-                alert('Vehículo eliminado con éxito');
-                const vehiculosActualizados = await obtenerVehiculos('vehiculos');
-                mostrarVehiculos(vehiculosActualizados);
-            } catch (error) {
-                console.error('Error al eliminar el vehículo:', error);
-                alert('Hubo un problema al eliminar el vehículo. Inténtalo de nuevo más tarde.');
-            }
+    // Asignar funcionalidad al botón "Agregar Vehículo"
+    const addButtons = document.querySelectorAll('.status-button.add');
+    addButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            const vehiculoId = event.target.getAttribute('data-id');
+            mostrarFormularioAgregarVehiculo();
+            console.log(`Agregar vehículo con ID: ${vehiculoId}`);
+        });
+    });
+
+    // Asignar funcionalidad al botón "Editar"
+    const editButtons = document.querySelectorAll('.status-button.edit');
+    editButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            const vehiculoId = event.target.getAttribute('data-id');
+            mostrarFormularioEditarVehiculo(vehiculoId);
         });
     });
 };
 
-// Función para mostrar la sección de Estado Clima
+
+// Función para mostrar el formulario de agregar estado climático
+const mostrarFormularioAgregarEstadoClimatico = () => {
+    const contentContainer = document.getElementById('content-container');
+    contentContainer.innerHTML = `
+        <h2 class="main__section--article--titulo">Agregar Nuevo Estado Climático</h2>
+        <form id="add-clima-form">
+            <label for="estado-climatico">Nombre del Estado Climático:</label>
+            <input type="text" id="estado-climatico" name="estado-climatico" required>
+            <button type="button" id="cancel-add-clima">Cancelar</button>
+            <button type="submit" id="submit-add-clima">Agregar</button>
+        </form>
+    `;
+
+    // Asignar eventos a los botones del formulario
+    document.getElementById('cancel-add-clima').addEventListener('click', mostrarSeccionClima);
+    document.getElementById('add-clima-form').addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const estadoClimatico = document.getElementById('estado-climatico').value.trim();
+
+        if (estadoClimatico) {
+            try {
+                const response = await fetch('http://localhost:3000/estados_clima', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ estado_climatico }),
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                alert('Estado climático agregado con éxito');
+                mostrarSeccionClima(); // Regresa a la lista de estados climáticos
+            } catch (error) {
+                console.error('Error al agregar estado climático:', error);
+                alert('Hubo un problema al agregar el estado climático. Inténtalo de nuevo más tarde.');
+            }
+        } else {
+            alert('Por favor, ingresa un nombre para el estado climático.');
+        }
+    });
+};
+
+// Función para mostrar el formulario de edición de estado climático
+const mostrarFormularioEditarEstadoClimatico = async (id) => {
+    const contentContainer = document.getElementById('content-container');
+    try {
+        const response = await fetch(`http://localhost:3000/estados_clima/${id}`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const estadoClimatico = await response.json();
+
+        contentContainer.innerHTML = `
+            <h2 class="main__section--article--titulo">Editar Estado Climático</h2>
+            <form id="edit-clima-form">
+                <label for="edit-estado-climatico">Nombre del Estado Climático:</label>
+                <input type="text" id="edit-estado-climatico" name="estado-climatico" value="${estadoClimatico.estado_climatico}" required>
+                <button type="button" id="cancel-edit-clima">Cancelar</button>
+                <button type="submit" id="submit-edit-clima">Guardar Cambios</button>
+            </form>
+        `;
+
+        // Asignar eventos a los botones del formulario
+        document.getElementById('cancel-edit-clima').addEventListener('click', mostrarSeccionClima);
+        document.getElementById('edit-clima-form').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const estadoClimatico = document.getElementById('edit-estado-climatico').value.trim();
+
+            if (estadoClimatico) {
+                try {
+                    const response = await fetch(`http://localhost:3000/estados_clima/${id}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ estado_climatico }),
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    alert('Estado climático actualizado con éxito');
+                    mostrarSeccionClima(); // Regresa a la lista de estados climáticos
+                } catch (error) {
+                    console.error('Error al actualizar estado climático:', error);
+                    alert('Hubo un problema al actualizar el estado climático. Inténtalo de nuevo más tarde.');
+                }
+            } else {
+                alert('Por favor, ingresa un nombre para el estado climático.');
+            }
+        });
+    } catch (error) {
+        console.error('Error al cargar los datos del estado climático:', error);
+        alert('Hubo un problema al cargar los datos del estado climático. Inténtalo de nuevo más tarde.');
+    }
+};
+
+// Función para mostrar la sección de Estados Climáticos
 const mostrarSeccionClima = async () => {
     const contentContainer = document.getElementById('content-container');
     contentContainer.innerHTML = `
@@ -249,19 +456,18 @@ const mostrarSeccionClima = async () => {
                 <!-- Las filas de datos se agregarán aquí dinámicamente -->
             </tbody>
         </table>
-        <button id="add-clima" class="main__section--input input__diferent">Agregar Estado Climático</button>
     `;
-    
-    let estadosClima = [];
+
+    // Cargar y mostrar los estados climáticos
     try {
-        estadosClima = await obtenerEstadoClima('estados_clima');
+        const estadosClima = await obtenerEstadoClima('estados_clima');
         mostrarEstadosClima(estadosClima);
     } catch (error) {
         console.error('Error al cargar los datos:', error);
         alert('Hubo un problema al cargar los datos. Inténtalo de nuevo más tarde.');
     }
 
-    // Evento para buscar estados climáticos
+    // Asignar eventos a los botones de búsqueda y agregar
     document.getElementById('search-button-clima').addEventListener('click', async () => {
         const query = document.querySelector('#search-input-clima').value.trim();
         try {
@@ -273,10 +479,7 @@ const mostrarSeccionClima = async () => {
         }
     });
 
-    // Evento para agregar estado climático
-    document.getElementById('add-clima').addEventListener('click', () => {
-        window.location.href = '/agregar-clima.html';
-    });
+    document.getElementById('add-clima').addEventListener('click', mostrarFormularioAgregarEstadoClimatico);
 };
 
 // Función para mostrar estados climáticos en la tabla
@@ -288,27 +491,49 @@ const mostrarEstadosClima = (estadosClima) => {
         const row = document.createElement('tr');
         row.innerHTML = `
             <td>${estado.id}</td>
-            <td>${estado.estado}</td>
+            <td>${estado.estado_climatico}</td>
             <td>
+                <button class="status-button edit" data-id="${estado.id}">Editar</button>
                 <button class="status-button delete" data-id="${estado.id}">Eliminar</button>
+                <button class="status-button add" data-id="${estado.id}">Agregar estados del clima</button>
             </td>
         `;
         tableBody.appendChild(row);
     });
 
-    // Añadir eventos de click a los botones
-    document.querySelectorAll('.delete').forEach(button => {
+    // Asignar eventos a los botones después de agregar las filas
+    asignarEventosEstadoClimatico();
+};
+
+// Función para manejar eventos de los botones
+const asignarEventosEstadoClimatico = () => {
+    // Asignar eventos a los botones de editar y eliminar
+    document.querySelectorAll('.status-button.edit').forEach(button => {
+        button.addEventListener('click', (event) => {
+            const estadoId = event.target.getAttribute('data-id');
+            mostrarFormularioEditarEstadoClimatico(estadoId);
+        });
+    });
+
+    document.querySelectorAll('.status-button.delete').forEach(button => {
         button.addEventListener('click', async (event) => {
-            const id = event.target.dataset.id;
+            const id = event.target.getAttribute('data-id');
             try {
                 await eliminarEstadoClima(id);
                 alert('Estado climático eliminado con éxito');
-                const estadosClimaActualizados = await obtenerEstadoClima('estado_clima');
+                const estadosClimaActualizados = await obtenerEstadoClima('estados_clima');
                 mostrarEstadosClima(estadosClimaActualizados);
             } catch (error) {
                 console.error('Error al eliminar el estado climático:', error);
                 alert('Hubo un problema al eliminar el estado climático. Inténtalo de nuevo más tarde.');
             }
+        });
+    });
+
+    document.querySelectorAll('.status-button.add').forEach(button => {
+        button.addEventListener('click', (event) => {
+            const estadoId = event.target.getAttribute('data-id');
+            mostrarFormularioAgregarEstadoClimatico(); // Aquí podrías manejar si el estado es un nuevo estado o ya existe
         });
     });
 };

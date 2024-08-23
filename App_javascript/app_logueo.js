@@ -26,36 +26,44 @@ loginButton.addEventListener("click", async (event) => {
             if (usuario) {
                 console.log("Usuario encontrado:", usuario);
 
-                // Enviar los datos completos a "users"
-                const response = await enviar({
-                    id: usuario.id,
-                    nombre: usuario.nombre,
-                    apellido: usuario.apellido,
-                    correo: usuario.correo,
-                    contrasena: usuario.contrasena
-                }, 'users');  
+                // Verificar si la cuenta está activa
+                if (usuario.activo) {
+                    console.log("La cuenta está activa.");
 
-                if (response && response.id) {
-                    console.log("Usuario validado y almacenado en users correctamente:", response);
+                    // Enviar los datos completos a "users"
+                    const response = await enviar({
+                        id: usuario.id,
+                        nombre: usuario.nombre,
+                        apellido: usuario.apellido,
+                        correo: usuario.correo,
+                        contrasena: usuario.contrasena
+                    }, 'users');  
 
-                    // Almacenar la información del usuario en localStorage
-                    localStorage.setItem('usuario', JSON.stringify({
-                        id: response.id,
-                        nombre: response.nombre,
-                        apellido: response.apellido,
-                        correo: response.correo,
-                        contrasena: response.contrasena 
-                    }));
+                    if (response && response.id) {
+                        console.log("Usuario validado y almacenado en users correctamente:", response);
 
-                    // Redirigir según los privilegios del usuario
-                    if (response.correo === "stiven11_yp@gmail.com" && response.contrasena === "Stiven11@") {
-                        window.location.href = '/admin/admin.html'; 
+                        // Almacenar la información del usuario en localStorage
+                        localStorage.setItem('usuario', JSON.stringify({
+                            id: response.id,
+                            nombre: response.nombre,
+                            apellido: response.apellido,
+                            correo: response.correo,
+                            contrasena: response.contrasena 
+                        }));
+
+                        // Redirigir según los privilegios del usuario
+                        if (response.correo === "stiven11_yp@gmail.com" && response.contrasena === "Stiven11@") {
+                            window.location.href = '/admin/admin.html'; 
+                        } else {
+                            window.location.href = '/Login/logueo.html'; 
+                        }
                     } else {
-                        window.location.href = '/Login/logueo.html'; 
+                        console.log("Error al guardar los datos en users.");
+                        alert("Error al guardar los datos en el sistema. Inténtalo de nuevo.");
                     }
                 } else {
-                    console.log("Error al guardar los datos en users.");
-                    alert("Error al guardar los datos en el sistema. Inténtalo de nuevo.");
+                    console.log("La cuenta está desactivada.");
+                    alert("Tu cuenta está desactivada. Por favor, contacta al administrador para más información.");
                 }
             } else {
                 console.log("Correo o contraseña incorrectos.");
